@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Detail - STMNPBDG.US</title>
 
-    <!-- CDN untuk Styling & Icon -->
+    <!-- CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -35,14 +35,12 @@
         padding: 0.5rem 0;
       }
 
-      /* Menghilangkan panah di input number */
       input[type="number"]::-webkit-inner-spin-button,
       input[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;
         margin: 0;
       }
 
-      /* Custom Scrollbar untuk Deskripsi */
       .custom-scrollbar::-webkit-scrollbar {
         width: 3px;
       }
@@ -53,13 +51,26 @@
       .custom-scrollbar::-webkit-scrollbar-track {
         background-color: transparent;
       }
+
+      @keyframes slideUpFade {
+        from {
+          opacity: 0;
+          transform: translate(-50%, 20px);
+        }
+        to {
+          opacity: 1;
+          transform: translate(-50%, 0);
+        }
+      }
+      .toast-animate {
+        animation: slideUpFade 0.5s ease-out forwards;
+      }
     </style>
   </head>
-  <!-- KUNCI LAYAR: h-screen & overflow-hidden -->
   <body
     class="bg-white m-0 p-0 h-screen overflow-hidden flex flex-col font-sans text-gray-900"
   >
-    <!-- ===================== SIDEBAR MENU ===================== -->
+    <!-- SIDEBAR -->
     <div
       id="sidebar"
       class="fixed inset-y-0 left-0 w-64 bg-white z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl"
@@ -111,7 +122,7 @@
       class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm"
     ></div>
 
-    <!-- ===================== HEADER ===================== -->
+    <!-- HEADER -->
     <nav
       class="w-full z-50 bg-custom-green text-white px-4 py-4 md:px-8 flex justify-between items-center shadow-md flex-none h-16 md:h-20"
     >
@@ -140,37 +151,31 @@
       </div>
     </nav>
 
-    <!-- ===================== MAIN CONTENT ===================== -->
+    <!-- CONTENT -->
     <main
-      class="w-full px-6 md:px-12 flex-grow flex flex-col justify-center items-center overflow-hidden"
+      class="w-full px-6 md:px-12 flex-grow flex flex-col justify-center items-center overflow-hidden pt-10"
     >
-      <div
-        class="max-w-[1200px] w-full h-full max-h-[85vh] flex flex-col pt-4 pb-2"
-      >
-        <!-- Header Judul & Back -->
-        <div class="flex justify-between items-center mb-4 flex-none">
-          <!-- Font size diperkecil -->
+      <div class="max-w-[1200px] w-full h-full max-h-[85vh] flex flex-col">
+        <div class="flex justify-between items-center mb-6 flex-none">
           <a
             href="shop.html"
-            class="inline-flex items-center gap-2 text-[10px] md:text-xs font-bold text-gray-500 hover:text-black transition"
+            class="inline-flex items-center gap-2 text-xs md:text-sm font-bold text-gray-500 hover:text-black transition"
           >
             <i class="fas fa-arrow-left"></i> Back
           </a>
-          <!-- Font size diperkecil -->
           <h1
-            class="text-xl md:text-2xl font-extrabold tracking-wide text-black absolute left-1/2 transform -translate-x-1/2"
+            class="text-2xl md:text-3xl font-extrabold tracking-wide text-black absolute left-1/2 transform -translate-x-1/2"
           >
             Product Detail
           </h1>
           <div class="w-10"></div>
         </div>
 
-        <!-- GRID 2 KOLOM -->
         <div
-          class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-stretch min-h-0"
+          class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-stretch min-h-0"
         >
-          <!-- KOLOM KIRI: FOTO -->
-          <div class="flex flex-col gap-3 h-full overflow-hidden">
+          <!-- KOLOM KIRI (Gambar) -->
+          <div class="flex flex-col gap-4 h-full overflow-hidden">
             <div
               class="w-full flex-grow bg-gray-100 rounded-xl overflow-hidden shadow-sm relative group min-h-0"
             >
@@ -187,77 +192,82 @@
             ></div>
           </div>
 
-          <!-- KOLOM KANAN: INFO -->
+          <!-- KOLOM KANAN (Info) -->
           <div class="flex flex-col h-full justify-between overflow-hidden">
-            <div class="flex-none pb-3 border-b border-gray-100">
-              <!-- Font size diperkecil -->
+            <div class="flex-none pb-4 border-b border-gray-100">
               <span
                 id="p-category"
-                class="bg-[#B6A176] text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide"
-                >Category</span
+                class="bg-[#B6A176] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wide"
+                >...</span
               >
-              <!-- Font size diperkecil -->
               <h2
                 id="p-name"
-                class="text-lg md:text-2xl font-extrabold mt-1 text-black leading-tight"
+                class="text-2xl md:text-3xl font-extrabold mt-3 text-black leading-tight"
               >
                 Loading...
               </h2>
-              <!-- Font size diperkecil -->
-              <p
-                id="p-price"
-                class="text-base md:text-lg font-bold mt-0.5 text-gray-700"
-              >
-                -
+              <p id="p-price" class="text-xl font-bold mt-2 text-gray-700">
+                ...
               </p>
             </div>
 
-            <div class="flex-grow overflow-y-auto custom-scrollbar py-3 pr-2">
-              <!-- Deskripsi -->
-              <h3 class="font-bold text-xs mb-0.5">Deskripsi</h3>
-              <p
-                id="p-desc"
-                class="text-[9px] md:text-xs text-gray-600 leading-relaxed text-justify mb-3"
-              >
-                Sedang memuat data...
-              </p>
+            <div class="flex-grow overflow-y-auto custom-scrollbar py-4 pr-2">
+              <div class="mb-6">
+                <h3 class="font-bold text-sm mb-2">Deskripsi</h3>
+                <p
+                  id="p-desc"
+                  class="text-xs md:text-sm text-gray-600 leading-relaxed text-justify"
+                >
+                  Sedang memuat data...
+                </p>
+              </div>
 
-              <!-- Pilihan Ukuran -->
-              <div class="mt-2">
-                <h3 class="font-bold text-[10px] mb-1">Pilih Ukuran</h3>
-                <div class="flex flex-wrap gap-1.5">
+              <!-- Varian (UPDATED) -->
+              <div class="mb-6">
+                <h3 class="font-bold text-xs mb-2">Pilih Ukuran</h3>
+                <div class="flex flex-wrap gap-2" id="size-options">
+                  <!-- Tombol dengan fungsi onclick="selectSize(this)" -->
                   <button
-                    class="border border-gray-300 text-[9px] md:text-[10px] px-3 py-1 rounded hover:bg-black hover:text-white transition"
+                    onclick="selectSize(this)"
+                    class="size-btn border border-gray-300 text-xs px-4 py-1.5 rounded hover:border-black transition"
+                    data-size="S"
                   >
                     S
                   </button>
                   <button
-                    class="border border-gray-300 text-[9px] md:text-[10px] px-3 py-1 rounded hover:bg-black hover:text-white transition"
+                    onclick="selectSize(this)"
+                    class="size-btn border border-gray-300 text-xs px-4 py-1.5 rounded hover:border-black transition"
+                    data-size="M"
                   >
                     M
                   </button>
                   <button
-                    class="border border-gray-300 text-[9px] md:text-[10px] px-3 py-1 rounded hover:bg-black hover:text-white transition"
+                    onclick="selectSize(this)"
+                    class="size-btn border border-gray-300 text-xs px-4 py-1.5 rounded hover:border-black transition bg-black text-white border-black"
+                    data-size="L"
                   >
                     L
                   </button>
+                  <!-- Default L Active -->
                   <button
-                    class="border border-gray-300 text-[9px] md:text-[10px] px-3 py-1 rounded hover:bg-black hover:text-white transition"
+                    onclick="selectSize(this)"
+                    class="size-btn border border-gray-300 text-xs px-4 py-1.5 rounded hover:border-black transition"
+                    data-size="XL"
                   >
                     XL
                   </button>
                 </div>
               </div>
 
-              <!-- UPDATE: Jumlah dipindahkan ke sini (Di bawah Ukuran) -->
-              <div class="mt-3">
-                <h3 class="font-bold text-[10px] mb-1">Jumlah</h3>
+              <!-- Jumlah -->
+              <div>
+                <h3 class="font-bold text-xs mb-2">Jumlah</h3>
                 <div
-                  class="flex items-center gap-1 bg-gray-100 rounded-lg px-2 py-1 w-fit"
+                  class="flex items-center gap-3 bg-gray-100 w-fit rounded-lg px-2 py-1"
                 >
                   <button
                     onclick="updateQty(-1)"
-                    class="w-5 h-5 flex items-center justify-center font-bold text-xs hover:text-[#263529]"
+                    class="w-6 h-6 flex items-center justify-center font-bold text-gray-600 hover:text-black"
                   >
                     -
                   </button>
@@ -265,12 +275,12 @@
                     id="qty"
                     type="number"
                     value="1"
-                    class="w-6 text-center border-none bg-transparent text-xs"
+                    class="w-8 text-center border-none bg-transparent text-sm font-bold"
                     readonly
                   />
                   <button
                     onclick="updateQty(1)"
-                    class="w-5 h-5 flex items-center justify-center font-bold text-xs hover:text-[#263529]"
+                    class="w-6 h-6 flex items-center justify-center font-bold text-gray-600 hover:text-black"
                   >
                     +
                   </button>
@@ -278,11 +288,11 @@
               </div>
             </div>
 
-            <!-- Bagian BAWAH (Hanya Tombol Beli) -->
-            <div class="flex-none pt-3 border-t border-gray-100">
+            <!-- Tombol Add to Bag -->
+            <div class="flex-none pt-4 border-t border-gray-100">
               <button
                 onclick="addToBag()"
-                class="w-full bg-[#263529] text-white font-bold py-2.5 rounded-lg hover:opacity-90 transition shadow-md text-xs md:text-sm flex items-center justify-center gap-2"
+                class="w-full bg-[#263529] text-white font-bold py-3.5 rounded-lg hover:opacity-90 transition shadow-md flex items-center justify-center gap-2 text-sm md:text-base"
               >
                 <i class="fas fa-shopping-bag"></i> Add To Bag
               </button>
@@ -292,24 +302,31 @@
       </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer
-      class="bg-custom-green text-custom-gold py-3 px-6 flex-none z-10 w-full text-center"
+    <!-- TOAST NOTIFICATION -->
+    <div
+      id="toast"
+      class="fixed bottom-10 left-1/2 transform -translate-x-1/2 bg-[#263529] text-white px-6 py-3 rounded-full shadow-2xl z-50 flex items-center gap-3 hidden"
     >
-      <div class="text-[10px] md:text-xs italic">
-        &copy; 2025 | stmnpbdg.us x dekavein.studios
-      </div>
-    </footer>
+      <i class="fas fa-check-circle text-[#B6A176]"></i>
+      <span class="text-sm font-bold">Produk berhasil masuk keranjang!</span>
+    </div>
 
     <!-- SCRIPT & DATA -->
     <script>
-      // --- 1. DATA PRODUK (DATABASE) ---
+      function formatRupiah(amount) {
+        return new Intl.NumberFormat("id-ID", {
+          style: "currency",
+          currency: "IDR",
+          minimumFractionDigits: 0,
+        }).format(amount);
+      }
+
       const productsDB = {
         hoodie_black: {
           name: "Signature Hoodie - Black",
           category: "Collection Q1",
           price: 350000,
-          desc: "Hoodie hitam premium dengan bahan Cotton Fleece 330gsm yang tebal namun adem. Dilengkapi dengan sablon Plastisol High Density.",
+          desc: "Hoodie hitam premium dengan bahan Cotton Fleece 330gsm yang tebal namun adem.",
           mainImage:
             "https://placehold.co/800x1000/111111/ffffff?text=Hoodie+Black",
           thumbnails: [
@@ -323,7 +340,7 @@
           name: "Basic Logo Tee - White",
           category: "Collection Q1",
           price: 150000,
-          desc: "Kaos putih bersih berbahan Cotton Combed 24s Australia. Sangat lembut di kulit, menyerap keringat, dan tidak menerawang.",
+          desc: "Kaos putih bersih berbahan Cotton Combed 24s Australia.",
           mainImage:
             "https://placehold.co/800x1000/eeeeee/333333?text=T-Shirt+White",
           thumbnails: [
@@ -337,7 +354,7 @@
           name: "Daily Canvas Totebag",
           category: "Accessories",
           price: 85000,
-          desc: "Totebag berbahan kanvas tebal (Marsoto) yang kuat menampung laptop hingga 14 inch. Dilengkapi resleting dan saku dalam.",
+          desc: "Totebag berbahan kanvas tebal (Marsoto).",
           mainImage: "https://placehold.co/800x1000/d4af37/ffffff?text=Totebag",
           thumbnails: [
             "https://placehold.co/800x1000/d4af37/ffffff?text=Full",
@@ -350,113 +367,105 @@
           name: "Produk Tidak Ditemukan",
           category: "-",
           price: 0,
-          desc: "Maaf, produk yang Anda cari tidak tersedia. Silakan kembali ke halaman Shop.",
+          desc: "Produk tidak tersedia.",
           mainImage: "https://placehold.co/800x1000/cccccc/000000?text=No+Data",
           thumbnails: [],
         },
       };
 
-      // --- 2. VARIABEL GLOBAL ---
       let currentProduct = {};
+      let selectedSize = "L"; // Default Size
 
-      // --- 3. LOAD DATA SAAT HALAMAN DIBUKA ---
       window.onload = function () {
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get("id");
-
-        // Ambil data dari productsDB
         const product = productsDB[productId] || productsDB["default"];
-        currentProduct = product; // Simpan ke global untuk addToBag
+        currentProduct = { ...product, id: productId };
 
-        // Render ke HTML (PASTIKAN ID ADA DI HTML)
-        const elName = document.getElementById("p-name");
-        if (elName) elName.innerText = product.name;
+        document.getElementById("p-name").innerText = product.name;
+        document.getElementById("p-category").innerText = product.category;
+        document.getElementById("p-price").innerText = formatRupiah(
+          product.price
+        );
+        document.getElementById("p-desc").innerText = product.desc;
+        document.getElementById("main-image").src = product.mainImage;
 
-        const elCategory = document.getElementById("p-category");
-        if (elCategory) elCategory.innerText = product.category;
-
-        const elPrice = document.getElementById("p-price");
-        if (elPrice)
-          elPrice.innerText = "Rp " + product.price.toLocaleString("id-ID");
-
-        const elDesc = document.getElementById("p-desc");
-        if (elDesc) elDesc.innerText = product.desc;
-
-        const elMainImg = document.getElementById("main-image");
-        if (elMainImg) elMainImg.src = product.mainImage;
-
-        // Render Thumbnails
         const thumbContainer = document.getElementById("thumbnail-container");
-        if (thumbContainer) {
-          thumbContainer.innerHTML = "";
-          if (product.thumbnails && product.thumbnails.length > 0) {
-            product.thumbnails.forEach((imgUrl, index) => {
-              const div = document.createElement("div");
-              div.className = `w-full h-full bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition border-2 ${
-                index === 0 ? "border-[#263529]" : "border-transparent"
-              } hover:border-[#263529]`;
+        thumbContainer.innerHTML = "";
 
-              div.onclick = function () {
-                document.getElementById("main-image").src = imgUrl;
-                Array.from(thumbContainer.children).forEach((c) => {
-                  c.classList.remove("border-[#263529]");
-                  c.classList.add("border-transparent");
-                });
-                this.classList.remove("border-transparent");
-                this.classList.add("border-[#263529]");
-              };
-
-              div.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover">`;
-              thumbContainer.appendChild(div);
-            });
-          }
+        if (product.thumbnails.length > 0) {
+          product.thumbnails.forEach((imgUrl, index) => {
+            const div = document.createElement("div");
+            div.className = `w-full h-full bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition border-2 ${
+              index === 0 ? "border-[#263529]" : "border-transparent"
+            } hover:border-[#263529]`;
+            div.onclick = function () {
+              document.getElementById("main-image").src = imgUrl;
+              Array.from(thumbContainer.children).forEach((c) => {
+                c.classList.remove("border-[#263529]");
+                c.classList.add("border-transparent");
+              });
+              this.classList.remove("border-transparent");
+              this.classList.add("border-[#263529]");
+            };
+            div.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover">`;
+            thumbContainer.appendChild(div);
+          });
         }
       };
 
-      // --- 4. FUNGSI KERANJANG ---
-      function addToBag() {
-        const qtyInput = document.getElementById("qty");
-        const qty = qtyInput ? parseInt(qtyInput.value) : 1;
+      // FUNGSI PILIH UKURAN
+      function selectSize(btn) {
+        // Hapus kelas aktif dari semua tombol
+        document.querySelectorAll(".size-btn").forEach((b) => {
+          b.classList.remove("bg-black", "text-white", "border-black");
+          b.classList.add("border-gray-300", "text-gray-900"); // Reset ke default
+        });
 
+        // Tambah kelas aktif ke tombol yang diklik
+        btn.classList.remove("border-gray-300", "text-gray-900");
+        btn.classList.add("bg-black", "text-white", "border-black");
+
+        // Simpan ukuran yang dipilih
+        selectedSize = btn.getAttribute("data-size");
+      }
+
+      function updateQty(change) {
+        const qtyInput = document.getElementById("qty");
+        let val = parseInt(qtyInput.value) + change;
+        if (val < 1) val = 1;
+        qtyInput.value = val;
+      }
+
+      function addToBag() {
+        const qty = parseInt(document.getElementById("qty").value);
         const cartItem = {
           id: new Date().getTime(),
-          productId: currentProduct.id || "unknown",
           name: currentProduct.name,
           price: currentProduct.price,
           image: currentProduct.mainImage,
           qty: qty,
-          size: "L",
+          size: selectedSize, // Gunakan ukuran yang dipilih
         };
 
         let cart = JSON.parse(localStorage.getItem("stmnpbdg_cart")) || [];
         cart.push(cartItem);
         localStorage.setItem("stmnpbdg_cart", JSON.stringify(cart));
 
-        alert("Berhasil masuk keranjang!");
+        const toast = document.getElementById("toast");
+        toast.classList.remove("hidden");
+        toast.classList.add("toast-animate");
 
-        // Redirect Aman
-        const link = document.createElement("a");
-        link.href = "../profile/cart.html";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        setTimeout(() => {
+          window.location.href = "../profile/cart.html";
+        }, 1000);
       }
 
-      function updateQty(change) {
-        const qtyInput = document.getElementById("qty");
-        if (!qtyInput) return;
-        let val = parseInt(qtyInput.value) + change;
-        if (val < 1) val = 1;
-        qtyInput.value = val;
-      }
-
-      // --- 5. TOGGLE MENU ---
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
       function toggleMenu() {
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
-        if (!sidebar || !overlay) return;
-
-        if (sidebar.classList.contains("-translate-x-full")) {
+        const isHidden = sidebar.classList.contains("-translate-x-full");
+        if (isHidden) {
           sidebar.classList.remove("-translate-x-full");
           overlay.classList.remove("hidden");
         } else {
