@@ -5,16 +5,15 @@ function toggleMenu() {
   const sidebar = document.getElementById("sidebar");
   const overlay = document.getElementById("overlay");
 
-  // Cek apakah elemen ada untuk menghindari error
+  // Cek apakah elemen ada (untuk menghindari error di halaman yang mungkin beda struktur)
   if (!sidebar || !overlay) return;
 
   const isHidden = sidebar.classList.contains("-translate-x-full");
-
   if (isHidden) {
     // Buka Menu
     sidebar.classList.remove("-translate-x-full");
     overlay.classList.remove("hidden");
-    // Animasi fade in overlay
+    // Animasi fade in overlay (sedikit delay agar transisi CSS jalan)
     setTimeout(() => {
       overlay.classList.remove("opacity-0");
     }, 10);
@@ -22,7 +21,7 @@ function toggleMenu() {
     // Tutup Menu
     sidebar.classList.add("-translate-x-full");
     overlay.classList.add("opacity-0");
-    // Tunggu animasi selesai baru sembunyikan overlay
+    // Tunggu animasi selesai baru hidden
     setTimeout(() => {
       overlay.classList.add("hidden");
     }, 300);
@@ -46,5 +45,14 @@ function formatRupiah(amount) {
     style: "currency",
     currency: "IDR",
     minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
   }).format(amount);
+}
+
+// =========================================
+// 3. FUNGSI NAVIGASI AMAN (Optional Helper)
+// =========================================
+// Membantu navigasi antar folder jika struktur berubah
+function navigateTo(path) {
+  window.location.href = path;
 }
