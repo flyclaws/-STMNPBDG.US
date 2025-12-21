@@ -5,40 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>STMNPBDG.US</title>
 
-    <!-- Menggunakan Tailwind CSS -->
+    <!-- CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Menggunakan Font Awesome untuk Icon -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
-    <!-- Menggunakan Google Font: Inter dan ROBOTO -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Roboto:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
       rel="stylesheet"
     />
 
     <style>
-      /* --- LOGIKA HILANGKAN SCROLLBAR --- */
-
-      /* Menyembunyikan scrollbar untuk Chrome, Safari, dan Opera */
-      html::-webkit-scrollbar,
-      body::-webkit-scrollbar {
-        display: none;
-      }
-
-      /* Menyembunyikan scrollbar untuk IE, Edge, dan Firefox */
-      html,
       body {
-        -ms-overflow-style: none; /* IE dan Edge */
-        scrollbar-width: none; /* Firefox */
-      }
-
-      /* --- STYLE LAINNYA --- */
-      body {
-        font-family: "Inter", sans-serif;
+        font-family: "Roboto", sans-serif;
         scroll-behavior: smooth;
       }
       .bg-custom-green {
@@ -50,11 +30,6 @@
         padding-top: 0.5rem;
         padding-bottom: 0.5rem;
       }
-      /* Class khusus untuk font Roboto */
-      .font-roboto {
-        font-family: "Roboto", sans-serif;
-      }
-      /* Warna Emas Baru #B6A176 */
       .text-custom-gold {
         color: #b6a176;
       }
@@ -63,7 +38,9 @@
       }
     </style>
   </head>
-  <body class="bg-white m-0 p-0 overflow-x-hidden flex flex-col min-h-screen">
+  <body
+    class="bg-white m-0 p-0 overflow-x-hidden flex flex-col min-h-screen text-gray-900"
+  >
     <!-- SIDEBAR MENU -->
     <div
       id="sidebar"
@@ -76,46 +53,41 @@
         >
           <i class="fas fa-bars text-xl"></i>
         </button>
+
         <ul
           class="flex flex-col gap-6 text-black font-extrabold tracking-wide text-sm md:text-base"
         >
           <li>
-            <a href="menu/shop.html" class="hover-line-menu group">
-              SHOP
-              <span
+            <a href="menu/shop.html" class="hover-line-menu group"
+              >SHOP<span
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
-              ></span>
-            </a>
+              ></span
+            ></a>
           </li>
           <li>
-            <a href="menu/collection.html" class="hover-line-menu group">
-              COLLECTION
-              <span
+            <a href="menu/collection.html" class="hover-line-menu group"
+              >COLLECTION<span
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
-              ></span>
-            </a>
+              ></span
+            ></a>
           </li>
           <li>
-            <a href="menu/lookbook.html" class="hover-line-menu group">
-              LOOKBOOK
-              <span
+            <a href="menu/lookbook.html" class="hover-line-menu group"
+              >LOOKBOOK<span
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
-              ></span>
-            </a>
+              ></span
+            ></a>
           </li>
           <li>
-            <a href="menu/about_us.html" class="hover-line-menu group">
-              ABOUT US
-              <span
+            <a href="menu/about_us.html" class="hover-line-menu group"
+              >ABOUT US<span
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
-              ></span>
-            </a>
+              ></span
+            ></a>
           </li>
         </ul>
       </div>
     </div>
-
-    <!-- OVERLAY -->
     <div
       id="overlay"
       onclick="toggleMenu()"
@@ -124,7 +96,7 @@
 
     <!-- HEADER -->
     <nav
-      class="w-full z-50 bg-custom-green text-white px-4 py-4 md:px-8 flex justify-between items-center shadow-md flex-none h-16 md:h-20 fixed top-0 left-0"
+      class="fixed top-0 left-0 w-full z-50 bg-custom-green text-white px-4 py-4 md:px-8 flex justify-between items-center shadow-md h-16 md:h-20"
     >
       <button
         onclick="toggleMenu()"
@@ -132,15 +104,12 @@
       >
         <i class="fas fa-bars"></i>
       </button>
-
-      <!-- LOGO LINK KE HALAMAN UTAMA (index.html) -->
       <a
         href="index.html"
         class="text-sm md:text-lg font-bold tracking-widest uppercase flex items-center gap-2 hover:opacity-80 transition cursor-pointer"
       >
         <i class="fas fa-leaf text-xs opacity-80"></i> STMNPBDG.US
       </a>
-
       <div class="flex gap-4 md:gap-6 items-center">
         <a
           href="profile/cart.html"
@@ -148,17 +117,16 @@
         >
           <i class="fas fa-shopping-cart"></i>
         </a>
-        <!-- Link ke Login -->
         <a
           href="profile/login.html"
-          class="text-lg md:text-xl text-custom-gold hover:opacity-100 transition"
+          class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-custom-gold"
         >
           <i class="fas fa-user-circle"></i>
         </a>
       </div>
     </nav>
 
-    <!-- MAIN HERO SECTION -->
+    <!-- HERO -->
     <main class="relative w-full h-screen bg-gray-300">
       <img
         src="https://placehold.co/1920x1080/cccccc/cccccc"
@@ -188,14 +156,21 @@
             cita-cita dengan jalan dan caranya masing-masing.
           </p>
         </div>
+        <div class="mt-6">
+          <a
+            href="menu/shop.html"
+            class="inline-block border border-white text-white px-6 py-3 text-sm font-bold tracking-widest hover:bg-white hover:text-black transition duration-300"
+            >SHOP NOW</a
+          >
+        </div>
       </div>
     </main>
 
-    <!-- SHOP SECTION -->
+    <!-- SHOP SECTION (DINAMIS DARI DATA INTERNAL) -->
     <section id="shop" class="w-full pt-32 pb-64 px-4 md:px-8 bg-white">
       <div class="text-center mb-12">
         <h2
-          class="text-3xl md:text-4xl font-extrabold tracking-widest uppercase text-black font-roboto inline-block relative group cursor-pointer"
+          class="text-3xl md:text-4xl font-extrabold tracking-widest uppercase text-black inline-block relative group cursor-pointer"
         >
           SHOP
           <span
@@ -205,263 +180,219 @@
       </div>
 
       <div class="max-w-[1600px] mx-auto">
-        <!-- Grid Produk -->
-        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-          <!-- Item 1 -->
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
+        <!-- Container Grid Produk -->
+        <div
+          id="product-grid"
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4"
+        >
+          <!-- Loading State -->
+          <p
+            class="col-span-full text-center text-gray-500 py-10 animate-pulse"
           >
-            <a
-              href="menu/product_detail.html?id=hoodie_black"
-              class="block w-full h-full"
-            >
-              <img
-                src="https://placehold.co/400x400/eeeeee/333333?text=Hoodie+1"
-                alt="Product"
-                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </a>
-          </div>
-          <!-- Item 2 -->
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <a
-              href="menu/product_detail.html?id=tshirt_white"
-              class="block w-full h-full"
-            >
-              <img
-                src="https://placehold.co/400x400/eeeeee/333333?text=T-Shirt+1"
-                alt="Product"
-                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </a>
-          </div>
-          <!-- Item 3 -->
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <a
-              href="menu/product_detail.html?id=totebag_canvas"
-              class="block w-full h-full"
-            >
-              <img
-                src="https://placehold.co/400x400/eeeeee/333333?text=Hoodie+2"
-                alt="Product"
-                class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </a>
-          </div>
-          <!-- Item 4 -->
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=T-Shirt+2"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <!-- Item 5 -->
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Shirt+Back"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <!-- Item 6 -->
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Tote+Bag"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-
-          <!-- ROW 2 -->
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Tote+2"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Sticker+1"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Key+Chain"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Pin"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Pin+2"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Pin+3"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-
-          <!-- ROW 3 -->
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Sticker+2"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Sticker+3"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Typography"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Sticker+4"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Tote+3"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
-          <div
-            class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer"
-          >
-            <img
-              src="https://placehold.co/400x400/eeeeee/333333?text=Tote+4"
-              alt="Product"
-              class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-          </div>
+            Memuat produk...
+          </p>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER SECTION -->
-    <footer class="bg-custom-green text-custom-gold font-roboto py-6 md:py-8">
+    <!-- FOOTER -->
+    <footer class="bg-custom-green text-custom-gold py-6 md:py-8">
       <div class="max-w-[1600px] mx-auto px-6 md:px-12">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 mb-6">
-          <!-- Kolom Kiri -->
           <div>
             <h3 class="text-xl font-bold mb-2">About Us</h3>
             <p class="text-custom-gold text-sm leading-relaxed max-w-md">
               STMNPBDG.US adalah destinasi merchandise premium dengan desain
-              eksklusif yang mencerminkan gaya hidup modern dan berani. Setiap
-              produk dirancang dengan perhatian pada detail dan kualitas.
+              eksklusif yang mencerminkan gaya hidup modern dan berani.
             </p>
           </div>
-
-          <!-- Kolom Kanan -->
           <div class="md:text-right mt-4 md:mt-0">
             <h3 class="text-xl font-bold mb-2">Connect With Us</h3>
-            <p class="text-custom-gold text-sm mb-4">
-              Follow our journey dan dapatkan update produk terbaru melalui
-              social media kami.
-            </p>
-
             <div class="flex gap-4 md:justify-end">
               <a
                 href="#"
                 class="w-8 h-8 border border-custom-gold rounded-lg flex items-center justify-center text-custom-gold hover:bg-white/10 transition"
-              >
-                <i class="fab fa-instagram text-lg"></i>
-              </a>
+                ><i class="fab fa-instagram text-lg"></i
+              ></a>
               <a
                 href="#"
                 class="w-8 h-8 border border-custom-gold rounded-lg flex items-center justify-center text-custom-gold hover:bg-white/10 transition"
-              >
-                <i class="fab fa-tiktok text-lg"></i>
-              </a>
+                ><i class="fab fa-tiktok text-lg"></i
+              ></a>
               <a
                 href="#"
                 class="w-8 h-8 border border-custom-gold rounded-lg flex items-center justify-center text-custom-gold hover:bg-white/10 transition"
-              >
-                <i class="fab fa-youtube text-lg"></i>
-              </a>
+                ><i class="fab fa-youtube text-lg"></i
+              ></a>
             </div>
           </div>
         </div>
-
-        <!-- Garis Pemisah warna #B6A176 -->
         <hr class="border-custom-gold mb-4 opacity-100" />
-
-        <!-- Copyright warna #B6A176 -->
         <div class="text-center text-xs text-custom-gold italic">
-          &copy; 2025 | stmnpbdg.us x dekavein.studios x it.parmad — Crafted
-          with passion. All rights reserved.
+          &copy; 2025 | stmnpbdg.us x dekavein.studios — Crafted with passion.
+          All rights reserved.
         </div>
       </div>
     </footer>
 
-    <!-- Script JS -->
+    <!-- SCRIPT (Load JSON + Sidebar) -->
+    <script src="js/main.js"></script>
     <script>
-      const sidebar = document.getElementById("sidebar");
-      const overlay = document.getElementById("overlay");
+      // LOGIC FETCH DATA PRODUK (DATA LANGSUNG AGAR AMAN)
+      function loadIndexShop() {
+        // Data produk disimpan langsung di sini untuk menghindari error fetch lokal
+        const products = [
+          {
+            id: "hoodie_black",
+            name: "Signature Hoodie",
+            price: 350000,
+            mainImage:
+              "https://placehold.co/400x400/111111/ffffff?text=Hoodie+Black",
+          },
+          {
+            id: "tshirt_white",
+            name: "Basic Logo Tee",
+            price: 150000,
+            mainImage:
+              "https://placehold.co/400x400/eeeeee/333333?text=T-Shirt+White",
+          },
+          {
+            id: "totebag_canvas",
+            name: "Daily Totebag",
+            price: 85000,
+            mainImage:
+              "https://placehold.co/400x400/d4af37/ffffff?text=Totebag",
+          },
+          {
+            id: "raya_brown_set",
+            name: "Raya Set Brown",
+            price: 450000,
+            mainImage:
+              "https://placehold.co/400x400/8d6e63/ffffff?text=Raya+Brown",
+          },
+          {
+            id: "oxford_shirt",
+            name: "Oxford Shirt Blue",
+            price: 250000,
+            mainImage:
+              "https://placehold.co/400x400/87CEEB/ffffff?text=Oxford+Blue",
+          },
+          {
+            id: "winter_coat",
+            name: "Winter Coat",
+            price: 550000,
+            mainImage:
+              "https://placehold.co/400x400/2F4F4F/ffffff?text=Winter+Coat",
+          },
+          {
+            id: "cap_black",
+            name: "Baseball Cap",
+            price: 75000,
+            mainImage:
+              "https://placehold.co/400x400/000000/ffffff?text=Cap+Black",
+          },
+          {
+            id: "chino_beige",
+            name: "Chino Pants",
+            price: 300000,
+            mainImage:
+              "https://placehold.co/400x400/F5F5DC/333333?text=Chino+Beige",
+          },
+          {
+            id: "scarf_wool",
+            name: "Wool Scarf",
+            price: 120000,
+            mainImage: "https://placehold.co/400x400/8B0000/ffffff?text=Scarf",
+          },
+          {
+            id: "raya_kimono_black",
+            name: "Kimono Top",
+            price: 280000,
+            mainImage:
+              "https://placehold.co/400x400/1a1a1a/ffffff?text=Kimono+Black",
+          },
+          {
+            id: "oversized_tee_grey",
+            name: "Oversized Tee",
+            price: 160000,
+            mainImage:
+              "https://placehold.co/400x400/808080/ffffff?text=Oversize+Grey",
+          },
+          {
+            id: "cargo_pants_green",
+            name: "Cargo Pants",
+            price: 320000,
+            mainImage:
+              "https://placehold.co/400x400/556b2f/ffffff?text=Cargo+Olive",
+          },
+          {
+            id: "denim_jacket_blue",
+            name: "Denim Jacket",
+            price: 450000,
+            mainImage:
+              "https://placehold.co/400x400/000080/ffffff?text=Denim+Jacket",
+          },
+          {
+            id: "flannel_shirt_red",
+            name: "Flannel Shirt",
+            price: 280000,
+            mainImage:
+              "https://placehold.co/400x400/8B0000/ffffff?text=Flannel+Red",
+          },
+          {
+            id: "bucket_hat_cream",
+            name: "Bucket Hat",
+            price: 90000,
+            mainImage:
+              "https://placehold.co/400x400/f5f5dc/333333?text=Bucket+Hat",
+          },
+          {
+            id: "socks_pack_white",
+            name: "Socks 3-Pack",
+            price: 99000,
+            mainImage:
+              "https://placehold.co/400x400/ffffff/333333?text=Socks+Pack",
+          },
+          {
+            id: "waist_bag_black",
+            name: "Waist Bag",
+            price: 120000,
+            mainImage:
+              "https://placehold.co/400x400/111111/ffffff?text=Waist+Bag",
+          },
+          {
+            id: "coach_jacket_navy",
+            name: "Coach Jacket",
+            price: 380000,
+            mainImage:
+              "https://placehold.co/400x400/000080/ffffff?text=Coach+Jacket",
+          },
+        ];
 
+        const grid = document.getElementById("product-grid");
+        grid.innerHTML = ""; // Hapus loading text
+
+        // Render setiap produk
+        products.forEach((p) => {
+          grid.innerHTML += `
+                    <div class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition">
+                        <!-- Link ke Detail (Masuk folder menu/) -->
+                        <a href="menu/product_detail.html?id=${p.id}" class="block w-full h-full">
+                            <img src="${p.mainImage}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </a>
+                    </div>
+                `;
+        });
+      }
+
+      // Jalankan saat halaman dimuat
+      window.onload = loadIndexShop;
+
+      // Override toggleMenu (jika main.js belum load sempurna)
       function toggleMenu() {
-        const isHidden = sidebar.classList.contains("-translate-x-full");
-        if (isHidden) {
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        if (sidebar.classList.contains("-translate-x-full")) {
           sidebar.classList.remove("-translate-x-full");
           overlay.classList.remove("hidden");
           setTimeout(() => {
