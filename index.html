@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -58,28 +58,28 @@
           class="flex flex-col gap-6 text-black font-extrabold tracking-wide text-sm md:text-base"
         >
           <li>
-            <a href="menu/shop.html" class="hover-line-menu group"
+            <a href="pages/menu/shop.html" class="hover-line-menu group"
               >SHOP<span
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
               ></span
             ></a>
           </li>
           <li>
-            <a href="menu/collection.html" class="hover-line-menu group"
+            <a href="pages/menu/collection.html" class="hover-line-menu group"
               >COLLECTION<span
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
               ></span
             ></a>
           </li>
           <li>
-            <a href="menu/lookbook.html" class="hover-line-menu group"
+            <a href="pages/menu/lookbook.html" class="hover-line-menu group"
               >LOOKBOOK<span
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
               ></span
             ></a>
           </li>
           <li>
-            <a href="menu/about_us.html" class="hover-line-menu group"
+            <a href="pages/menu/about_us.html" class="hover-line-menu group"
               >ABOUT US<span
                 class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
               ></span
@@ -112,17 +112,28 @@
       </a>
       <div class="flex gap-4 md:gap-6 items-center">
         <a
-          href="profile/cart.html"
+          href="pages/profile/cart.html"
           class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-white"
         >
           <i class="fas fa-shopping-cart"></i>
         </a>
-        <a
-          href="profile/login.html"
-          class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-custom-gold"
-        >
-          <i class="fas fa-user-circle"></i>
-        </a>
+        <div class="relative">
+          <button
+            data-user-button
+            class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-custom-gold"
+          >
+            <i class="fas fa-user-circle"></i>
+          </button>
+          <!-- User Dropdown Menu (hanya muncul saat login) -->
+          <div
+            id="userDropdown"
+            class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg z-50"
+          >
+            <div id="userDropdownContent" class="p-4">
+              <!-- Dinamis berdasarkan login status -->
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
 
@@ -158,7 +169,7 @@
         </div>
         <div class="mt-6">
           <a
-            href="menu/shop.html"
+            href="pages/menu/shop.html"
             class="inline-block border border-white text-white px-6 py-3 text-sm font-bold tracking-widest hover:bg-white hover:text-black transition duration-300"
             >SHOP NOW</a
           >
@@ -246,140 +257,153 @@
             id: "hoodie_black",
             name: "Signature Hoodie",
             price: 350000,
-            mainImage:
-              "https://placehold.co/400x400/111111/ffffff?text=Hoodie+Black",
+            mainImage: "asset/images/shop/hoddy.jpg",
+            sizes: { S: 5, M: 8, L: 3, XL: 0 },
           },
           {
             id: "tshirt_white",
             name: "Basic Logo Tee",
             price: 150000,
-            mainImage:
-              "https://placehold.co/400x400/eeeeee/333333?text=T-Shirt+White",
+            mainImage: "asset/images/shop/kaos.jpg",
+            sizes: { S: 12, M: 15, L: 10, XL: 8 },
           },
           {
             id: "totebag_canvas",
             name: "Daily Totebag",
             price: 85000,
-            mainImage:
-              "https://placehold.co/400x400/d4af37/ffffff?text=Totebag",
+            mainImage: "asset/images/shop/tas.jpg",
+            sizes: { S: 0, M: 0, L: 2, XL: 2 },
           },
           {
             id: "raya_brown_set",
             name: "Raya Set Brown",
             price: 450000,
-            mainImage:
-              "https://placehold.co/400x400/8d6e63/ffffff?text=Raya+Brown",
+            mainImage: "asset/images/shop/DSC04555.jpg",
+            sizes: { S: 4, M: 6, L: 5, XL: 3 },
           },
           {
             id: "oxford_shirt",
             name: "Oxford Shirt Blue",
             price: 250000,
-            mainImage:
-              "https://placehold.co/400x400/87CEEB/ffffff?text=Oxford+Blue",
+            mainImage: "asset/images/shop/kaos 2.jpg",
+            sizes: { S: 6, M: 10, L: 8, XL: 4 },
           },
           {
             id: "winter_coat",
             name: "Winter Coat",
             price: 550000,
-            mainImage:
-              "https://placehold.co/400x400/2F4F4F/ffffff?text=Winter+Coat",
+            mainImage: "asset/images/shop/jaket.jpg",
+            sizes: { S: 2, M: 3, L: 1, XL: 0 },
           },
           {
             id: "cap_black",
             name: "Baseball Cap",
             price: 75000,
-            mainImage:
-              "https://placehold.co/400x400/000000/ffffff?text=Cap+Black",
+            mainImage: "asset/images/shop/topi.jpg",
+            sizes: { S: 20, M: 25, L: 18, XL: 15 },
           },
           {
             id: "chino_beige",
             name: "Chino Pants",
             price: 300000,
-            mainImage:
-              "https://placehold.co/400x400/F5F5DC/333333?text=Chino+Beige",
+            mainImage: "asset/images/shop/kaos3.jpg",
+            sizes: { S: 7, M: 9, L: 6, XL: 4 },
           },
           {
             id: "scarf_wool",
             name: "Wool Scarf",
             price: 120000,
-            mainImage: "https://placehold.co/400x400/8B0000/ffffff?text=Scarf",
+            mainImage: "asset/images/shop/stiker.jpg",
+            sizes: { S: 0, M: 0, L: 0, XL: 0 },
           },
           {
             id: "raya_kimono_black",
             name: "Kimono Top",
             price: 280000,
-            mainImage:
-              "https://placehold.co/400x400/1a1a1a/ffffff?text=Kimono+Black",
+            mainImage: "asset/images/shop/hoddy2.jpg",
+            sizes: { S: 8, M: 12, L: 9, XL: 5 },
           },
           {
             id: "oversized_tee_grey",
             name: "Oversized Tee",
             price: 160000,
-            mainImage:
-              "https://placehold.co/400x400/808080/ffffff?text=Oversize+Grey",
+            mainImage: "asset/images/shop/stiker2.jpg",
+            sizes: { S: 11, M: 14, L: 7, XL: 9 },
           },
           {
             id: "cargo_pants_green",
             name: "Cargo Pants",
             price: 320000,
-            mainImage:
-              "https://placehold.co/400x400/556b2f/ffffff?text=Cargo+Olive",
+            mainImage: "asset/images/shop/tas2.jpg",
+            sizes: { S: 3, M: 5, L: 4, XL: 2 },
           },
           {
             id: "denim_jacket_blue",
             name: "Denim Jacket",
             price: 450000,
-            mainImage:
-              "https://placehold.co/400x400/000080/ffffff?text=Denim+Jacket",
+            mainImage: "asset/images/shop/stiker3.jpg",
+            sizes: { S: 6, M: 8, L: 5, XL: 3 },
           },
           {
             id: "flannel_shirt_red",
             name: "Flannel Shirt",
             price: 280000,
-            mainImage:
-              "https://placehold.co/400x400/8B0000/ffffff?text=Flannel+Red",
+            mainImage: "asset/images/shop/pin.jpg",
+            sizes: { S: 10, M: 13, L: 8, XL: 6 },
           },
           {
             id: "bucket_hat_cream",
             name: "Bucket Hat",
             price: 90000,
-            mainImage:
-              "https://placehold.co/400x400/f5f5dc/333333?text=Bucket+Hat",
+            mainImage: "asset/images/shop/pin2.jpg",
+            sizes: { S: 0, M: 0, L: 0, XL: 0 },
           },
           {
             id: "socks_pack_white",
             name: "Socks 3-Pack",
             price: 99000,
-            mainImage:
-              "https://placehold.co/400x400/ffffff/333333?text=Socks+Pack",
+            mainImage: "asset/images/shop/pin3.jpg",
+            sizes: { S: 30, M: 35, L: 28, XL: 22 },
           },
           {
             id: "waist_bag_black",
             name: "Waist Bag",
             price: 120000,
-            mainImage:
-              "https://placehold.co/400x400/111111/ffffff?text=Waist+Bag",
+            mainImage: "asset/images/shop/stiker4.jpg",
+            sizes: { S: 1, M: 2, L: 1, XL: 0 },
           },
           {
             id: "coach_jacket_navy",
             name: "Coach Jacket",
             price: 380000,
-            mainImage:
-              "https://placehold.co/400x400/000080/ffffff?text=Coach+Jacket",
+            mainImage: "asset/images/shop/hoddy2.jpg",
+            sizes: { S: 4, M: 7, L: 5, XL: 2 },
           },
         ];
+
+        // Function to calculate total stock
+        function getTotalStock(product) {
+          return Object.values(product.sizes).reduce(
+            (sum, qty) => sum + qty,
+            0,
+          );
+        }
 
         const grid = document.getElementById("product-grid");
         grid.innerHTML = ""; // Hapus loading text
 
         // Render setiap produk
         products.forEach((p) => {
+          const totalStock = getTotalStock(p);
+          const isSoldOut = totalStock === 0;
+
           grid.innerHTML += `
                     <div class="group relative bg-gray-100 aspect-square overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition">
                         <!-- Link ke Detail (Masuk folder menu/) -->
-                        <a href="menu/product_detail.html?id=${p.id}" class="block w-full h-full">
-                            <img src="${p.mainImage}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <a href="pages/menu/product_detail.html?id=${p.id}" class="block w-full h-full ${isSoldOut ? "opacity-60 pointer-events-none" : ""}">
+                            <img src="${p.mainImage}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 ${isSoldOut ? "grayscale" : ""}">
                         </a>
+                        ${isSoldOut ? '<div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">SOLD OUT</div>' : ""}
                     </div>
                 `;
         });
@@ -406,6 +430,45 @@
           }, 300);
         }
       }
+
+      // Jalankan saat halaman dimuat
+      window.onload = loadIndexShop;
+
+      // Override toggleMenu (jika main.js belum load sempurna)
+      function toggleMenu() {
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+        if (sidebar.classList.contains("-translate-x-full")) {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+          setTimeout(() => {
+            overlay.classList.remove("opacity-0");
+          }, 10);
+        } else {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("opacity-0");
+          setTimeout(() => {
+            overlay.classList.add("hidden");
+          }, 300);
+        }
+      }
+
+      // Event listener untuk user button (toggle dropdown)
+      document.addEventListener("click", function (event) {
+        const userButton = document.querySelector("[data-user-button]");
+        const userDropdown = document.getElementById("userDropdown");
+
+        if (userButton && userDropdown) {
+          if (userButton.contains(event.target)) {
+            userDropdown.classList.toggle("hidden");
+          } else if (!userDropdown.contains(event.target)) {
+            userDropdown.classList.add("hidden");
+          }
+        }
+      });
     </script>
+
+    <!-- MAIN JS -->
+    <script src="asset/js/main.js"></script>
   </body>
 </html>

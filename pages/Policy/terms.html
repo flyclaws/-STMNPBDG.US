@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms & Conditions - STMNPBDG.US</title>
+
+    <!-- CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      .bg-custom-green {
+        background-color: #263529;
+      }
+      .text-custom-gold {
+        color: #b6a176;
+      }
+      .hover-line-menu {
+        position: relative;
+        display: inline-block;
+        padding: 0.5rem 0;
+      }
+
+      /* Typography Styling */
+      h2 {
+        color: #263529;
+        font-weight: 700;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.125rem;
+      }
+      p,
+      ul {
+        color: #4b5563;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        text-align: justify;
+      }
+      ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+      }
+      li {
+        margin-bottom: 0.25rem;
+      }
+
+      /* --- MODIFIKASI: MENYEMBUNYIKAN SCROLLBAR SECARA GLOBAL --- */
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        display: none;
+      }
+
+      html,
+      body {
+        -ms-overflow-style: none; /* IE dan Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    </style>
+  </head>
+  <!-- 
+    PERUBAHAN BODY:
+    - Hapus: h-screen overflow-hidden
+    - Tambah: min-h-screen (agar halaman memanjang ke bawah dan footer ada di paling akhir)
+  -->
+  <body
+    class="bg-white m-0 p-0 min-h-screen flex flex-col font-sans text-gray-900"
+  >
+    <!-- SIDEBAR -->
+    <div
+      id="sidebar"
+      class="fixed inset-y-0 left-0 w-64 bg-white z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl"
+    >
+      <div class="p-6">
+        <button
+          onclick="toggleMenu()"
+          class="bg-custom-green text-custom-gold w-10 h-10 rounded flex items-center justify-center mb-12 hover:opacity-90 transition shadow-sm"
+        >
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <ul
+          class="flex flex-col gap-6 text-black font-extrabold tracking-wide text-sm md:text-base"
+        >
+          <li>
+            <a href="../menu/shop.html" class="hover-line-menu group"
+              >SHOP<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../menu/collection.html" class="hover-line-menu group"
+              >COLLECTION<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../menu/lookbook.html" class="hover-line-menu group"
+              >LOOKBOOK<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../menu/about_us.html" class="hover-line-menu group"
+              >ABOUT US<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      id="overlay"
+      onclick="toggleMenu()"
+      class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm"
+    ></div>
+
+    <!-- HEADER (Fixed) -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 bg-custom-green text-white px-4 py-4 md:px-8 flex justify-between items-center shadow-md h-16 md:h-20"
+    >
+      <button
+        onclick="toggleMenu()"
+        class="text-xl md:text-2xl opacity-80 hover:opacity-100 transition focus:outline-none"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <a
+        href="../index.html"
+        class="text-sm md:text-lg font-bold tracking-widest uppercase flex items-center gap-2 hover:opacity-80 transition cursor-pointer"
+      >
+        <i class="fas fa-leaf text-xs opacity-80"></i> STMNPBDG.US
+      </a>
+      <div class="flex gap-4 md:gap-6 items-center">
+        <a
+          href="../profile/cart.html"
+          class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-white"
+          ><i class="fas fa-shopping-cart"></i
+        ></a>
+        <div class="relative">
+          <button
+            data-user-button
+            class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-custom-gold"
+          >
+            <i class="fas fa-user-circle"></i>
+          </button>
+          <!-- User Dropdown Menu (hanya muncul saat login) -->
+          <div
+            id="userDropdown"
+            class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg z-50"
+          >
+            <div id="userDropdownContent" class="p-4">
+              <!-- Dinamis berdasarkan login status -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <!-- 
+      PERUBAHAN MAIN:
+      - pt-28: Memberi ruang agar tidak tertutup header
+      - flex-grow: Agar mengisi ruang kosong
+      - Hapus wrapper scrollable internal
+    -->
+    <main
+      class="w-full pt-28 pb-12 px-4 md:px-12 flex-grow flex flex-col items-center justify-start"
+    >
+      <div class="max-w-[1000px] w-full flex flex-col">
+        <!-- Judul Halaman -->
+        <div class="text-center mb-8 relative">
+          <!-- Tombol Kembali -->
+          <a
+            href="../profile/create_account.html"
+            class="absolute left-0 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-500 hover:text-black transition flex items-center gap-2"
+          >
+            <i class="fas fa-arrow-left"></i> Back
+          </a>
+          <h1
+            class="text-2xl md:text-4xl font-extrabold tracking-wide text-black uppercase"
+          >
+            Terms & Conditions
+          </h1>
+        </div>
+
+        <!-- Konten Teks -->
+        <div
+          class="bg-gray-50 rounded-xl p-6 md:p-10 border border-gray-100 shadow-sm"
+        >
+          <p class="font-bold mb-4">Terakhir Diperbarui: 2025</p>
+          <p>
+            Selamat datang di STMNPBDG.US. Silakan baca Syarat dan Ketentuan ini
+            dengan seksama sebelum menggunakan layanan kami atau melakukan
+            pembelian produk. Dengan mengakses atau menggunakan situs ini, Anda
+            setuju untuk terikat oleh ketentuan berikut.
+          </p>
+
+          <h2>1. Umum</h2>
+          <p>
+            STMNPBDG.US adalah toko online yang menyediakan produk fashion
+            berkualitas. Kami berhak untuk mengubah, menangguhkan, atau
+            menghentikan layanan kapan saja tanpa pemberitahuan sebelumnya. Kami
+            juga berhak menolak layanan kepada siapa pun dengan alasan apa pun
+            kapan saja.
+          </p>
+
+          <h2>2. Informasi Produk</h2>
+          <ul>
+            <li>
+              Kami berusaha menampilkan warna dan gambar produk seakurat
+              mungkin. Namun, kami tidak dapat menjamin bahwa tampilan warna
+              pada monitor komputer atau layar ponsel Anda akan 100% akurat.
+            </li>
+            <li>
+              Semua deskripsi produk dan harga dapat berubah sewaktu-waktu tanpa
+              pemberitahuan.
+            </li>
+            <li>Kami berhak membatasi jumlah produk yang kami tawarkan.</li>
+          </ul>
+
+          <h2>3. Pemesanan dan Pembayaran</h2>
+          <p>
+            Saat Anda melakukan pemesanan, Anda setuju untuk memberikan
+            informasi pembelian dan akun yang terkini, lengkap, dan akurat. Kami
+            menerima pembayaran melalui Transfer Bank, Q-RIS, dan E-Wallet.
+            Pesanan akan diproses setelah pembayaran dikonfirmasi.
+          </p>
+
+          <h2>4. Pengiriman</h2>
+          <p>
+            Pengiriman dilakukan menggunakan jasa ekspedisi pihak ketiga. Waktu
+            pengiriman yang tertera adalah estimasi. Keterlambatan yang
+            disebabkan oleh pihak ekspedisi di luar tanggung jawab kami, namun
+            kami akan membantu melacak paket Anda.
+          </p>
+
+          <h2>5. Kebijakan Pengembalian (Return Policy)</h2>
+          <p>
+            Barang yang sudah dibeli tidak dapat ditukar atau dikembalikan,
+            kecuali terdapat cacat produksi atau kesalahan pengiriman dari pihak
+            kami. Klaim pengembalian harus disertai dengan video unboxing tanpa
+            jeda maksimal 2x24 jam setelah barang diterima.
+          </p>
+
+          <h2>6. Hak Kekayaan Intelektual</h2>
+          <p>
+            Seluruh konten di situs ini, termasuk namun tidak terbatas pada
+            teks, grafik, logo, gambar, dan kode, adalah properti dari
+            STMNPBDG.US dan dilindungi oleh undang-undang hak cipta. Dilarang
+            keras menggunakan konten kami tanpa izin tertulis.
+          </p>
+
+          <h2>7. Privasi</h2>
+          <p>
+            Kami menghargai privasi Anda. Informasi pribadi yang Anda berikan
+            hanya akan digunakan untuk memproses pesanan dan meningkatkan
+            layanan kami sesuai dengan Kebijakan Privasi kami.
+          </p>
+
+          <h2>8. Kontak</h2>
+          <p>
+            Jika Anda memiliki pertanyaan mengenai Syarat dan Ketentuan ini,
+            silakan hubungi kami melalui halaman media sosial kami atau email
+            support.
+          </p>
+
+          <div
+            class="mt-8 pt-4 border-t border-gray-200 text-center text-gray-500 text-xs"
+          >
+            &copy; 2025 | stmnpbdg.us x dekavein.studios x it.parmad — Crafted
+            with passion. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <!-- mt-auto memastikan footer terdorong ke bawah -->
+    <footer
+      class="bg-custom-green text-custom-gold py-4 px-6 md:px-12 flex-none w-full mt-auto"
+    >
+      <div class="max-w-[1600px] mx-auto text-center">
+        <div class="text-[10px] md:text-xs italic">
+          &copy; 2025 | stmnpbdg.us x dekavein.studios x it.parmad — Crafted
+          with passion. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      function toggleMenu() {
+        const isHidden = sidebar.classList.contains("-translate-x-full");
+        if (isHidden) {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+          setTimeout(() => {
+            overlay.classList.remove("opacity-0");
+          }, 10);
+        } else {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("opacity-0");
+          setTimeout(() => {
+            overlay.classList.add("hidden");
+          }, 300);
+        }
+      }
+
+      // Event listener untuk user button (toggle dropdown)
+      document.addEventListener("click", function (event) {
+        const userButton = document.querySelector("[data-user-button]");
+        const userDropdown = document.getElementById("userDropdown");
+
+        if (userButton && userDropdown) {
+          if (userButton.contains(event.target)) {
+            userDropdown.classList.toggle("hidden");
+          } else if (!userDropdown.contains(event.target)) {
+            userDropdown.classList.add("hidden");
+          }
+        }
+      });
+    </script>
+
+    <!-- MAIN JS -->
+    <script src="../../asset/js/main.js"></script>
+  </body>
+</html>

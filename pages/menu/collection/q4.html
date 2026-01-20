@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Q4 SUMMER - STMNPBDG.US</title>
+
+    <!-- CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      .bg-custom-green {
+        background-color: #263529;
+      }
+      .text-custom-gold {
+        color: #b6a176;
+      }
+      .hover-line-menu {
+        position: relative;
+        display: inline-block;
+        padding: 0.5rem 0;
+      }
+
+      /* --- MODIFIKASI: MENYEMBUNYIKAN SCROLLBAR --- */
+      /* Class ini digunakan pada container grid produk */
+      .custom-scrollbar {
+        -ms-overflow-style: none; /* IE dan Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+
+      /* Menyembunyikan scrollbar untuk Chrome, Safari, dan Opera */
+      .custom-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-white m-0 p-0 h-screen overflow-hidden flex flex-col font-sans text-gray-900"
+  >
+    <!-- SIDEBAR -->
+    <div
+      id="sidebar"
+      class="fixed inset-y-0 left-0 w-64 bg-white z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl"
+    >
+      <div class="p-6">
+        <button
+          onclick="toggleMenu()"
+          class="bg-custom-green text-custom-gold w-10 h-10 rounded flex items-center justify-center mb-12 hover:opacity-90 transition shadow-sm"
+        >
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <ul
+          class="flex flex-col gap-6 text-black font-extrabold tracking-wide text-sm md:text-base"
+        >
+          <li>
+            <a href="../shop.html" class="hover-line-menu group"
+              >SHOP<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <!-- Link Aktif -->
+          <li>
+            <a href="../collection.html" class="hover-line-menu group"
+              >COLLECTION<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../lookbook.html" class="hover-line-menu group"
+              >LOOKBOOK<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../about_us.html" class="hover-line-menu group"
+              >ABOUT US<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      id="overlay"
+      onclick="toggleMenu()"
+      class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm"
+    ></div>
+
+    <!-- HEADER -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 bg-custom-green text-white px-4 py-4 md:px-8 flex justify-between items-center shadow-md h-16 md:h-20"
+    >
+      <button
+        onclick="toggleMenu()"
+        class="text-xl md:text-2xl opacity-80 hover:opacity-100 transition focus:outline-none"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <a
+        href="../../../index.html"
+        class="text-sm md:text-lg font-bold tracking-widest uppercase flex items-center gap-2 hover:opacity-80 transition cursor-pointer"
+      >
+        <i class="fas fa-leaf text-xs opacity-80"></i> STMNPBDG.US
+      </a>
+      <div class="flex gap-4 md:gap-6 items-center">
+        <a
+          href="../../profile/cart.html"
+          class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-white"
+          ><i class="fas fa-shopping-cart"></i
+        ></a>
+        <div class="relative">
+          <button
+            data-user-button
+            class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-custom-gold"
+          >
+            <i class="fas fa-user-circle"></i>
+          </button>
+          <!-- User Dropdown Menu (hanya muncul saat login) -->
+          <div
+            id="userDropdown"
+            class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg z-50"
+          >
+            <div id="userDropdownContent" class="p-4">
+              <!-- Dinamis berdasarkan login status -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main
+      class="w-full px-4 md:px-8 flex-grow flex flex-col justify-center items-center overflow-hidden pt-20"
+    >
+      <div class="max-w-[1400px] w-full h-full flex flex-col">
+        <!-- Header Judul & Back -->
+        <div
+          class="flex flex-col items-center mb-6 flex-none relative justify-center"
+        >
+          <!-- Tombol Back Absolute di Kiri -->
+          <a
+            href="../collection.html"
+            class="absolute left-0 top-1/2 -translate-y-1/2 text-xl md:text-2xl text-black hover:opacity-70 transition"
+          >
+            <i class="fas fa-arrow-left"></i>
+          </a>
+
+          <h1
+            class="text-2xl md:text-3xl font-extrabold tracking-wide text-black font-roboto uppercase"
+          >
+            Q1 - SUMMER
+          </h1>
+        </div>
+
+        <!-- GRID PRODUK SCROLLABLE -->
+        <div class="flex-grow overflow-y-auto custom-scrollbar pb-8 px-2">
+          <!-- Grid 4 Kolom di semua perangkat -->
+          <div id="q1-grid" class="grid grid-cols-4 gap-3 md:gap-6">
+            <!-- Produk akan di-load via JS -->
+            <p
+              class="col-span-full text-center text-gray-500 py-20 animate-pulse"
+            >
+              Memuat koleksi...
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-custom-green text-custom-gold py-4 px-6 md:px-12 flex-none w-full"
+    >
+      <div class="max-w-[1600px] mx-auto text-center">
+        <div class="text-[10px] md:text-xs italic">
+          &copy; 2025 | stmnpbdg.us x dekavein.studios x it.parmad — Crafted
+          with passion. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script src="../../js/main.js"></script>
+    <script>
+      // LOAD DATA KHUSUS KATEGORI Q1
+      function loadCollectionQ1() {
+        // Data Produk Hardcoded
+        const products = [
+          {
+            id: "winter_coat",
+            name: "Winter Coat - Charcoal",
+            category: "Collection Q4",
+            price: 550000,
+            mainImage: "../../../asset/images/shop/tas.jpg",
+            sizes: { S: 2, M: 3, L: 1, XL: 0 },
+          },
+          {
+            id: "scarf_wool",
+            name: "Wool Scarf - Red",
+            category: "Collection Q4",
+            price: 120000,
+            mainImage: "../../../asset/images/shop/tas2.jpg",
+            sizes: { S: 0, M: 0, L: 0, XL: 0 },
+          },
+          {
+            id: "flannel_shirt_red",
+            name: "Flannel Shirt - Red Check",
+            category: "Collection Q4",
+            price: 280000,
+            mainImage: "../../../asset/images/shop/topi.jpg",
+            sizes: { S: 10, M: 13, L: 8, XL: 6 },
+          },
+          {
+            id: "coach_jacket_navy",
+            name: "Coach Jacket - Navy",
+            category: "Collection Q4",
+            price: 380000,
+            mainImage: "../../../asset/images/shop/pin.jpg",
+            sizes: { S: 4, M: 7, L: 5, XL: 2 },
+          },
+          {
+            id: "raya_shirt_cream",
+            name: "Loose Shirt - Cream",
+            category: "Collection Q4",
+            price: 225000,
+            mainImage: "../../../asset/images/shop/pin2.jpg",
+            sizes: { S: 5, M: 7, L: 6, XL: 4 },
+          },
+          {
+            id: "raya_set_beige",
+            name: "Raya Set - Beige",
+            category: "Collection Q4",
+            price: 480000,
+            mainImage: "../../../asset/images/shop/pin3.jpg",
+            sizes: { S: 3, M: 5, L: 4, XL: 2 },
+          },
+          {
+            id: "raya_outer_navy",
+            name: "Modern Outer - Navy",
+            category: "Collection Q4",
+            price: 320000,
+            mainImage: "../../../asset/images/shop/stiker.jpg",
+            sizes: { S: 4, M: 6, L: 5, XL: 3 },
+          },
+          {
+            id: "raya_pants_stripe",
+            name: "Striped Pants - Loose",
+            category: "Collection Q4",
+            price: 210000,
+            mainImage: "../../../asset/images/shop/stiker2.jpg",
+            sizes: { S: 4, M: 6, L: 5, XL: 3 },
+          },
+        ];
+
+        const grid = document.getElementById("q1-grid");
+        grid.innerHTML = "";
+
+        if (products.length > 0) {
+          products.forEach((p) => renderProduct(p, grid));
+        } else {
+          grid.innerHTML =
+            '<p class="col-span-full text-center text-gray-500">Belum ada produk di koleksi ini.</p>';
+        }
+      }
+
+      // Fungsi Render Item (Hanya Animasi Zoom, Tanpa Overlay Teks)
+      function renderProduct(p, container) {
+        const totalStock = Object.values(p.sizes || {}).reduce(
+          (sum, qty) => sum + qty,
+          0,
+        );
+        const isSoldOut = totalStock === 0;
+
+        container.innerHTML += `
+                <div class="group relative bg-gray-50 aspect-[3/4] overflow-hidden cursor-pointer hover:shadow-lg transition duration-300 rounded-md">
+                    <!-- Link ke Detail (Mundur 1 folder ../) -->
+                    <a href="../product_detail.html?id=${p.id}" class="block w-full h-full ${isSoldOut ? "opacity-60 pointer-events-none" : ""}">
+                        <!-- PERUBAHAN: Hanya gambar dengan efek zoom, tanpa overlay teks -->
+                        <img src="${p.mainImage}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 ease-in-out ${isSoldOut ? "grayscale" : ""}">
+                    </a>
+                    ${isSoldOut ? '<div class="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">SOLD OUT</div>' : ""}
+                </div>
+            `;
+      }
+
+      window.onload = loadCollectionQ1;
+
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      function toggleMenu() {
+        const isHidden = sidebar.classList.contains("-translate-x-full");
+        if (isHidden) {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+          setTimeout(() => {
+            overlay.classList.remove("opacity-0");
+          }, 10);
+        } else {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("opacity-0");
+          setTimeout(() => {
+            overlay.classList.add("hidden");
+          }, 300);
+        }
+      }
+
+      // Event listener untuk user button (toggle dropdown)
+      document.addEventListener("click", function (event) {
+        const userButton = document.querySelector("[data-user-button]");
+        const userDropdown = document.getElementById("userDropdown");
+
+        if (userButton && userDropdown) {
+          if (userButton.contains(event.target)) {
+            userDropdown.classList.toggle("hidden");
+          } else if (!userDropdown.contains(event.target)) {
+            userDropdown.classList.add("hidden");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

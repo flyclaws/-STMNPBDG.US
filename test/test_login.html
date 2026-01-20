@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login System Test - STMNPBDG.US</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold mb-8 text-center">Login System Test</h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Test Status -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4">Current Status</h2>
+          <div id="status" class="text-sm text-gray-600">
+            Checking login status...
+          </div>
+          <button
+            onclick="checkStatus()"
+            class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Refresh Status
+          </button>
+        </div>
+
+        <!-- Test Actions -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4">Test Actions</h2>
+          <div class="space-y-3">
+            <button
+              onclick="testLogin()"
+              class="w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            >
+              Test Login (admin@test.com / 123)
+            </button>
+            <button
+              onclick="testLogout()"
+              class="w-full bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+            >
+              Test Logout
+            </button>
+            <button
+              onclick="clearAll()"
+              class="w-full bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+            >
+              Clear All Data
+            </button>
+            <button
+              onclick="testPaths()"
+              class="w-full bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600"
+            >
+              Test Path Functions
+            </button>
+          </div>
+        </div>
+
+        <!-- Navigation Test -->
+        <div class="bg-white p-6 rounded-lg shadow-md md:col-span-2">
+          <h2 class="text-xl font-semibold mb-4">Navigation Test</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a
+              href="index.html"
+              class="bg-gray-500 text-white px-4 py-2 rounded text-center hover:bg-gray-600"
+              >Home</a
+            >
+            <a
+              href="pages/menu/shop.html"
+              class="bg-gray-500 text-white px-4 py-2 rounded text-center hover:bg-gray-600"
+              >Shop</a
+            >
+            <a
+              href="pages/profile/login.html"
+              class="bg-gray-500 text-white px-4 py-2 rounded text-center hover:bg-gray-600"
+              >Login</a
+            >
+            <a
+              href="pages/profile/cart.html"
+              class="bg-gray-500 text-white px-4 py-2 rounded text-center hover:bg-gray-600"
+              >Cart</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Import main.js functions
+      function checkStatus() {
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        const usersDB = JSON.parse(localStorage.getItem("usersDB")) || [];
+        const cart = JSON.parse(localStorage.getItem("stmnpbdg_cart")) || [];
+
+        let status = "<strong>Login Status:</strong> ";
+        if (currentUser) {
+          status += `✅ Logged in as ${currentUser.name || currentUser.email}<br>`;
+        } else {
+          status += "❌ Not logged in<br>";
+        }
+
+        status += `<strong>Users DB:</strong> ${usersDB.length} users registered<br>`;
+        status += `<strong>Cart Items:</strong> ${cart.length} items<br>`;
+        status += `<strong>Current Path:</strong> ${window.location.pathname}<br>`;
+
+        document.getElementById("status").innerHTML = status;
+      }
+
+      function testLogin() {
+        // Simulate login
+        const testUser = { nama: "Test Admin", email: "admin@test.com" };
+        localStorage.setItem("currentUser", JSON.stringify(testUser));
+        alert("Login test successful! User set to: " + testUser.nama);
+        checkStatus();
+      }
+
+      function testLogout() {
+        localStorage.removeItem("currentUser");
+        alert("Logout test successful!");
+        checkStatus();
+      }
+
+      function clearAll() {
+        if (confirm("Clear all localStorage data?")) {
+          localStorage.clear();
+          alert("All data cleared!");
+          checkStatus();
+        }
+      }
+
+      function testPaths() {
+        // Test path functions from main.js
+        const currentPath = window.location.pathname;
+        let result = "<strong>Path Test Results:</strong><br>";
+        result += `Current Path: ${currentPath}<br>`;
+
+        // Simulate getLoginPath logic
+        let loginPath;
+        if (currentPath.includes("/pages/profile/")) {
+          loginPath = "login.html";
+        } else if (currentPath.includes("/pages/menu/")) {
+          loginPath = "../profile/login.html";
+        } else if (currentPath.includes("/pages/payment/")) {
+          loginPath = "../profile/login.html";
+        } else if (currentPath.includes("/pages/Policy/")) {
+          loginPath = "../profile/login.html";
+        } else {
+          loginPath = "pages/profile/login.html";
+        }
+
+        result += `Login Path: ${loginPath}<br>`;
+
+        // Simulate getCartPath logic
+        let cartPath;
+        if (currentPath.includes("/pages/profile/")) {
+          cartPath = "cart.html";
+        } else if (currentPath.includes("/pages/menu/")) {
+          cartPath = "../profile/cart.html";
+        } else if (currentPath.includes("/pages/payment/")) {
+          cartPath = "../profile/cart.html";
+        } else if (currentPath.includes("/pages/Policy/")) {
+          cartPath = "../profile/cart.html";
+        } else {
+          cartPath = "pages/profile/cart.html";
+        }
+
+        result += `Cart Path: ${cartPath}<br>`;
+
+        document.getElementById("status").innerHTML = result;
+      }
+
+      // Check status on load
+      window.onload = checkStatus;
+    </script>
+  </body>
+</html>

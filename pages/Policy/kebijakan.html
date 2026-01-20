@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy - STMNPBDG.US</title>
+
+    <!-- CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      .bg-custom-green {
+        background-color: #263529;
+      }
+      .text-custom-gold {
+        color: #b6a176;
+      }
+      .hover-line-menu {
+        position: relative;
+        display: inline-block;
+        padding: 0.5rem 0;
+      }
+
+      /* Typography Styling */
+      h2 {
+        color: #263529;
+        font-weight: 700;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        font-size: 1.125rem;
+      }
+      p,
+      ul {
+        color: #4b5563;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        text-align: justify;
+      }
+      ul {
+        list-style-type: disc;
+        padding-left: 1.5rem;
+      }
+      li {
+        margin-bottom: 0.25rem;
+      }
+
+      /* --- MODIFIKASI: MENYEMBUNYIKAN SCROLLBAR SECARA GLOBAL --- */
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar,
+      div::-webkit-scrollbar {
+        display: none;
+      }
+
+      html,
+      body,
+      div {
+        -ms-overflow-style: none; /* IE dan Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    </style>
+  </head>
+  <!-- 
+    PERUBAHAN BODY:
+    - Hapus: h-screen overflow-hidden
+    - Tambah: min-h-screen (agar halaman bisa memanjang ke bawah dan footer tidak melayang)
+  -->
+  <body
+    class="bg-white m-0 p-0 min-h-screen flex flex-col font-sans text-gray-900"
+  >
+    <!-- SIDEBAR -->
+    <div
+      id="sidebar"
+      class="fixed inset-y-0 left-0 w-64 bg-white z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl"
+    >
+      <div class="p-6">
+        <button
+          onclick="toggleMenu()"
+          class="bg-custom-green text-custom-gold w-10 h-10 rounded flex items-center justify-center mb-12 hover:opacity-90 transition shadow-sm"
+        >
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <ul
+          class="flex flex-col gap-6 text-black font-extrabold tracking-wide text-sm md:text-base"
+        >
+          <li>
+            <a href="../menu/shop.html" class="hover-line-menu group"
+              >SHOP<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../menu/collection.html" class="hover-line-menu group"
+              >COLLECTION<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../menu/lookbook.html" class="hover-line-menu group"
+              >LOOKBOOK<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../menu/about_us.html" class="hover-line-menu group"
+              >ABOUT US<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      id="overlay"
+      onclick="toggleMenu()"
+      class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm"
+    ></div>
+
+    <!-- HEADER (Fixed) -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 bg-custom-green text-white px-4 py-4 md:px-8 flex justify-between items-center shadow-md h-16 md:h-20"
+    >
+      <button
+        onclick="toggleMenu()"
+        class="text-xl md:text-2xl opacity-80 hover:opacity-100 transition focus:outline-none"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <a
+        href="../../index.html"
+        class="text-sm md:text-lg font-bold tracking-widest uppercase flex items-center gap-2 hover:opacity-80 transition cursor-pointer"
+      >
+        <i class="fas fa-leaf text-xs opacity-80"></i> STMNPBDG.US
+      </a>
+      <div class="flex gap-4 md:gap-6 items-center">
+        <a
+          href="../profile/cart.html"
+          class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-white"
+          ><i class="fas fa-shopping-cart"></i
+        ></a>
+        <div class="relative">
+          <button
+            data-user-button
+            class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-custom-gold"
+          >
+            <i class="fas fa-user-circle"></i>
+          </button>
+          <!-- User Dropdown Menu (hanya muncul saat login) -->
+          <div
+            id="userDropdown"
+            class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg z-50"
+          >
+            <div id="userDropdownContent" class="p-4">
+              <!-- Dinamis berdasarkan login status -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <!-- 
+      PERUBAHAN MAIN:
+      - pt-28: Memberi ruang untuk header fixed
+      - flex-grow: Agar konten mengisi ruang
+      - Menghapus overflow-hidden dan h-full
+    -->
+    <main
+      class="w-full pt-28 pb-12 px-4 md:px-12 flex-grow flex flex-col items-center justify-start"
+    >
+      <div class="max-w-[1000px] w-full flex flex-col">
+        <!-- Judul Halaman -->
+        <div class="text-center mb-8 relative">
+          <!-- Tombol Kembali -->
+          <a
+            href="../profile/create_account.html"
+            class="absolute left-0 top-1/2 -translate-y-1/2 text-sm font-bold text-gray-500 hover:text-black transition flex items-center gap-2"
+          >
+            <i class="fas fa-arrow-left"></i> Back
+          </a>
+          <h1
+            class="text-2xl md:text-4xl font-extrabold tracking-wide text-black uppercase"
+          >
+            Privacy Policy
+          </h1>
+        </div>
+
+        <!-- Konten Teks (Tanpa wrapper scrollable terbatas) -->
+        <div
+          class="bg-gray-50 rounded-xl p-6 md:p-10 border border-gray-100 shadow-sm"
+        >
+          <p class="font-bold mb-4">Terakhir Diperbarui: 2025</p>
+          <p>
+            Di STMNPBDG.US, privasi Anda adalah prioritas kami. Kebijakan
+            Privasi ini menjelaskan jenis informasi pribadi apa yang kami
+            kumpulkan dan bagaimana kami menggunakannya, menyimpannya, dan
+            melindunginya.
+          </p>
+
+          <h2>1. Informasi yang Kami Kumpulkan</h2>
+          <p>
+            Kami mengumpulkan informasi yang Anda berikan secara langsung kepada
+            kami, seperti saat Anda membuat akun, melakukan pembelian, atau
+            menghubungi layanan pelanggan. Informasi ini dapat meliputi:
+          </p>
+          <ul>
+            <li>Nama lengkap</li>
+            <li>Alamat email</li>
+            <li>Alamat pengiriman dan penagihan</li>
+            <li>Nomor telepon</li>
+            <li>
+              Informasi pembayaran (diproses secara aman oleh pihak ketiga)
+            </li>
+          </ul>
+
+          <h2>2. Penggunaan Informasi</h2>
+          <p>
+            Kami menggunakan informasi yang kami kumpulkan untuk berbagai
+            tujuan, termasuk untuk:
+          </p>
+          <ul>
+            <li>Memproses dan memenuhi pesanan Anda.</li>
+            <li>
+              Berkomunikasi dengan Anda mengenai pesanan, produk, layanan, dan
+              penawaran promosi.
+            </li>
+            <li>Meningkatkan dan mempersonalisasi pengalaman belanja Anda.</li>
+            <li>Mencegah penipuan dan menjaga keamanan platform kami.</li>
+          </ul>
+
+          <h2>3. Berbagi Informasi (Pihak Ketiga)</h2>
+          <p>
+            Kami tidak menjual atau menyewakan informasi pribadi Anda kepada
+            pihak ketiga. Namun, kami dapat membagikan informasi Anda dengan
+            penyedia layanan pihak ketiga yang membantu operasional bisnis kami,
+            seperti jasa pengiriman (logistik) dan pemrosesan pembayaran, yang
+            terikat kewajiban kerahasiaan.
+          </p>
+
+          <h2>4. Cookies</h2>
+          <p>
+            Situs web kami menggunakan "cookies" untuk meningkatkan pengalaman
+            Anda. Cookies adalah file kecil yang disimpan di perangkat Anda
+            untuk mengingat preferensi Anda dan isi keranjang belanja Anda. Anda
+            dapat memilih untuk menonaktifkan cookies melalui pengaturan browser
+            Anda, namun hal ini dapat memengaruhi fungsi situs web kami.
+          </p>
+
+          <h2>5. Keamanan Data</h2>
+          <p>
+            Kami menerapkan langkah-langkah keamanan teknis dan organisasi yang
+            wajar untuk melindungi informasi pribadi Anda dari akses,
+            penggunaan, atau pengungkapan yang tidak sah. Namun, perlu diingat
+            bahwa tidak ada metode transmisi data melalui internet yang 100%
+            aman.
+          </p>
+
+          <h2>6. Hak Anda</h2>
+          <p>
+            Anda memiliki hak untuk mengakses, memperbaiki, atau menghapus
+            informasi pribadi Anda yang tersimpan di database kami. Jika Anda
+            ingin menggunakan hak ini, silakan hubungi kami melalui informasi
+            kontak yang tersedia.
+          </p>
+
+          <h2>7. Perubahan Kebijakan</h2>
+          <p>
+            Kami dapat memperbarui Kebijakan Privasi ini dari waktu ke waktu.
+            Setiap perubahan akan diposting di halaman ini dengan tanggal
+            pembaruan yang baru. Kami menyarankan Anda untuk meninjau halaman
+            ini secara berkala.
+          </p>
+
+          <h2>8. Hubungi Kami</h2>
+          <p>
+            Jika Anda memiliki pertanyaan tentang Kebijakan Privasi ini, silakan
+            hubungi kami melalui email support atau media sosial resmi kami.
+          </p>
+
+          <div
+            class="mt-8 pt-4 border-t border-gray-200 text-center text-gray-500 text-xs"
+          >
+            &copy; 2025 | stmnpbdg.us x dekavein.studios x it.parmad — Crafted
+            with passion. All rights reserved.
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <!-- mt-auto memastikan footer terdorong ke bawah jika konten sedikit -->
+    <footer
+      class="bg-custom-green text-custom-gold py-4 px-6 md:px-12 flex-none w-full mt-auto"
+    >
+      <div class="max-w-[1600px] mx-auto text-center">
+        <div class="text-[10px] md:text-xs italic">
+          &copy; 2025 | stmnpbdg.us x dekavein.studios x it.parmad — Crafted
+          with passion. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script>
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      function toggleMenu() {
+        const isHidden = sidebar.classList.contains("-translate-x-full");
+        if (isHidden) {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+          setTimeout(() => {
+            overlay.classList.remove("opacity-0");
+          }, 10);
+        } else {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("opacity-0");
+          setTimeout(() => {
+            overlay.classList.add("hidden");
+          }, 300);
+        }
+      }
+
+      // Event listener untuk user button (toggle dropdown)
+      document.addEventListener("click", function (event) {
+        const userButton = document.querySelector("[data-user-button]");
+        const userDropdown = document.getElementById("userDropdown");
+
+        if (userButton && userDropdown) {
+          if (userButton.contains(event.target)) {
+            userDropdown.classList.toggle("hidden");
+          } else if (!userDropdown.contains(event.target)) {
+            userDropdown.classList.add("hidden");
+          }
+        }
+      });
+    </script>
+
+    <!-- MAIN JS -->
+    <script src="../../asset/js/main.js"></script>
+  </body>
+</html>

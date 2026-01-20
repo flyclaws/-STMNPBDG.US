@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout & Success Navigation Test - STMNPBDG.US</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-3xl font-bold mb-8 text-center">
+        Checkout & Success Navigation Test
+      </h1>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Current Status -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4">Current Status</h2>
+          <div id="status" class="text-sm text-gray-600">
+            Checking status...
+          </div>
+          <button
+            onclick="checkStatus()"
+            class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Refresh Status
+          </button>
+        </div>
+
+        <!-- Test Actions -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4">Test Navigation</h2>
+          <div class="space-y-3">
+            <button
+              onclick="testLogin()"
+              class="w-full bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+            >
+              1. Login First (admin@test.com / 123)
+            </button>
+            <button
+              onclick="addToCart()"
+              class="w-full bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            >
+              2. Add Item to Cart
+            </button>
+            <button
+              onclick="goToCart()"
+              class="w-full bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600"
+            >
+              3. Go to Cart
+            </button>
+            <button
+              onclick="goToCheckout()"
+              class="w-full bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
+            >
+              4. Go to Checkout (from Cart)
+            </button>
+            <button
+              onclick="simulatePayment()"
+              class="w-full bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+            >
+              5. Simulate Payment → Success
+            </button>
+            <button
+              onclick="clearAll()"
+              class="w-full bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600"
+            >
+              Clear All Data
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="bg-white p-6 rounded-lg shadow-md md:col-span-2">
+          <h2 class="text-xl font-semibold mb-4">Direct Links</h2>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <a
+              href="pages/menu/shop.html"
+              class="bg-gray-500 text-white px-4 py-2 rounded text-center hover:bg-gray-600"
+              >Shop</a
+            >
+            <a
+              href="pages/profile/cart.html"
+              class="bg-gray-500 text-white px-4 py-2 rounded text-center hover:bg-gray-600"
+              >Cart</a
+            >
+            <a
+              href="pages/payment/checkout.html"
+              class="bg-gray-500 text-white px-4 py-2 rounded text-center hover:bg-gray-600"
+              >Checkout</a
+            >
+            <a
+              href="pages/payment/success.html"
+              class="bg-gray-500 text-white px-4 py-2 rounded text-center hover:bg-gray-600"
+              >Success</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Test functions
+      function checkStatus() {
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        const cart = JSON.parse(localStorage.getItem("stmnpbdg_cart")) || [];
+
+        let status = "<strong>Login Status:</strong> ";
+        if (currentUser) {
+          status += `✅ Logged in as ${currentUser.name || currentUser.email}<br>`;
+        } else {
+          status += "❌ Not logged in<br>";
+        }
+
+        status += `<strong>Cart Items:</strong> ${cart.length} items<br>`;
+        status += `<strong>Current Path:</strong> ${window.location.pathname}<br>`;
+
+        document.getElementById("status").innerHTML = status;
+      }
+
+      function testLogin() {
+        const testUser = { name: "Test Admin", email: "admin@test.com" };
+        localStorage.setItem("currentUser", JSON.stringify(testUser));
+        alert("Login successful! User set to: " + testUser.name);
+        checkStatus();
+      }
+
+      function addToCart() {
+        // Add a test item to cart
+        const testItem = {
+          id: 1,
+          name: "Test Product",
+          price: 150000,
+          size: "L",
+          qty: 1,
+          image: "asset/images/shop/product1.jpg",
+        };
+
+        let cart = JSON.parse(localStorage.getItem("stmnpbdg_cart")) || [];
+        cart.push(testItem);
+        localStorage.setItem("stmnpbdg_cart", JSON.stringify(cart));
+
+        alert("Item added to cart!");
+        checkStatus();
+      }
+
+      function goToCart() {
+        window.location.href = "pages/profile/cart.html";
+      }
+
+      function goToCheckout() {
+        window.location.href = "pages/payment/checkout.html";
+      }
+
+      function simulatePayment() {
+        // Simulate the finishPayment function from checkout.html
+        localStorage.removeItem("stmnpbdg_cart");
+        window.location.href = "pages/payment/success.html";
+      }
+
+      function clearAll() {
+        if (confirm("Clear all localStorage data?")) {
+          localStorage.clear();
+          alert("All data cleared!");
+          checkStatus();
+        }
+      }
+
+      // Check status on load
+      window.onload = checkStatus;
+    </script>
+  </body>
+</html>

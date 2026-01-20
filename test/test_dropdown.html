@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test User Dropdown Fix - STMNPBDG.US</title>
+    <script src="../asset/js/main.js"></script>
+  </head>
+  <body>
+    <div class="max-w-4xl mx-auto p-8">
+      <h1 class="text-3xl font-bold mb-8 text-center">
+        User Dropdown Fix Test
+      </h1>
+
+      <div class="bg-white p-6 rounded-lg shadow-md mb-8">
+        <h2 class="text-xl font-semibold mb-4">Test Results</h2>
+        <div id="results" class="text-sm font-mono bg-gray-100 p-4 rounded">
+          Running tests...
+        </div>
+      </div>
+
+      <button data-user-button class="bg-blue-500 text-white px-4 py-2 rounded">
+        Login
+      </button>
+      <div
+        id="userDropdownContent"
+        class="mt-4 p-4 border rounded bg-gray-50"
+      ></div>
+    </div>
+
+    <script>
+      const resultsDiv = document.getElementById("results");
+      let testCount = 0;
+
+      function log(message) {
+        resultsDiv.textContent += `[${++testCount}] ${message}\n`;
+        console.log(message);
+      }
+
+      // Test 1: User with "nama" field (normal registration)
+      log('Testing user with "nama" field (normal registration)...');
+      const testUser1 = { nama: "John Doe", email: "john@example.com" };
+      localStorage.setItem("currentUser", JSON.stringify(testUser1));
+      updateUserButton();
+
+      setTimeout(() => {
+        const button = document.querySelector("[data-user-button]");
+        const dropdown = document.getElementById("userDropdownContent");
+
+        log(`Button title: "${button.title}"`);
+        log(
+          `Dropdown contains name: ${dropdown.innerHTML.includes("John Doe")}`,
+        );
+
+        // Test 2: Admin backdoor login
+        log("Testing admin backdoor login...");
+        localStorage.setItem(
+          "currentUser",
+          JSON.stringify({ nama: "Admin", email: "admin@test.com" }),
+        );
+        updateUserButton();
+
+        setTimeout(() => {
+          log(`Button title: "${button.title}"`);
+          log(
+            `Dropdown contains name: ${dropdown.innerHTML.includes("Admin")}`,
+          );
+
+          // Test 3: Old format (should show undefined)
+          log('Testing old "name" field format (should fail)...');
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({ name: "Old User", email: "old@example.com" }),
+          );
+          updateUserButton();
+
+          setTimeout(() => {
+            log(`Button title: "${button.title}"`);
+            log(
+              `Dropdown shows undefined: ${button.title.includes("undefined")}`,
+            );
+            log("✅ All tests completed!");
+          }, 100);
+        }, 100);
+      }, 100);
+    </script>
+  </body>
+</html>

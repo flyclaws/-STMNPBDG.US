@@ -5,7 +5,13 @@
     "category": "Collection Q1",
     "price": 350000,
     "desc": "Hoodie hitam premium dengan bahan Cotton Fleece 330gsm yang tebal namun adem. Dilengkapi dengan sablon Plastisol High Density di bagian dada dan punggung. Potongan Oversized fit yang modern cocok untuk gaya streetwear sehari-hari. Material berkualitas tinggi menjamin kenyamanan maksimal.",
-    "mainImage": "https://placehold.co/800x1000/111111/ffffff?text=Hoodie+Black",
+    "mainImage": "asset/images/shop/hoddy.jpg",
+    "sizes": {
+      "S": 5,
+      "M": 8,
+      "L": 3,
+      "XL": 0
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/111111/ffffff?text=Front",
       "https://placehold.co/800x1000/111111/ffffff?text=Back",
@@ -19,7 +25,13 @@
     "category": "Collection Q1",
     "price": 150000,
     "desc": "Kaos putih bersih berbahan Cotton Combed 24s Australia. Sangat lembut di kulit, menyerap keringat, dan tidak menerawang. Desain minimalis dengan logo kecil di dada kiri, cocok untuk dipadukan dengan outfit apapun.",
-    "mainImage": "https://placehold.co/800x1000/eeeeee/333333?text=T-Shirt+White",
+    "mainImage": "asset/images/shop/kaos.jpg",
+    "sizes": {
+      "S": 12,
+      "M": 15,
+      "L": 10,
+      "XL": 8
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/eeeeee/333333?text=Front",
       "https://placehold.co/800x1000/eeeeee/333333?text=Back",
@@ -33,7 +45,13 @@
     "category": "Collection Q3",
     "price": 85000,
     "desc": "Totebag berbahan kanvas tebal (Marsoto) yang kuat menampung laptop hingga 14 inch. Dilengkapi dengan resleting dan saku dalam untuk keamanan barang bawaan Anda. Warna natural beige yang estetik.",
-    "mainImage": "https://placehold.co/800x1000/d4af37/ffffff?text=Totebag",
+    "mainImage": "asset/images/shop/tas.jpg",
+    "sizes": {
+      "S": 0,
+      "M": 0,
+      "L": 2,
+      "XL": 2
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/d4af37/ffffff?text=Full",
       "https://placehold.co/800x1000/d4af37/ffffff?text=Inside",
@@ -47,7 +65,13 @@
     "category": "Collection Q1",
     "price": 450000,
     "desc": "Setelan baju koko modern dengan warna coklat earthy yang hangat. Terdiri dari atasan lengan panjang dan celana dengan potongan regular fit. Bahan katun linen yang breathable sangat cocok untuk dipakai seharian saat lebaran.",
-    "mainImage": "https://placehold.co/800x1000/8d6e63/ffffff?text=Raya+Brown",
+    "mainImage": "asset/images/shop/DSC04555.jpg",
+    "sizes": {
+      "S": 4,
+      "M": 6,
+      "L": 5,
+      "XL": 3
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/8d6e63/ffffff?text=Full+Set",
       "https://placehold.co/800x1000/8d6e63/ffffff?text=Top",
@@ -61,7 +85,13 @@
     "category": "Collection Q2",
     "price": 250000,
     "desc": "Kemeja Oxford klasik berwarna biru muda. Dibuat dari bahan katun oxford berkualitas tinggi yang tahan lama namun tetap nyaman. Potongan slim fit memberikan siluet yang rapi, cocok untuk ke kantor atau acara semi-formal.",
-    "mainImage": "https://placehold.co/800x1000/87CEEB/ffffff?text=Oxford+Blue",
+    "mainImage": "asset/images/shop/kaos 2.jpg",
+    "sizes": {
+      "S": 6,
+      "M": 10,
+      "L": 8,
+      "XL": 4
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/87CEEB/ffffff?text=Front",
       "https://placehold.co/800x1000/87CEEB/ffffff?text=Collar",
@@ -75,7 +105,13 @@
     "category": "Collection Q4",
     "price": 550000,
     "desc": "Mantel musim dingin berbahan wool blend warna charcoal. Desain minimalis dengan kancing depan tersembunyi dan kerah tinggi untuk perlindungan ekstra dari angin. Lapisan dalam satin yang lembut.",
-    "mainImage": "https://placehold.co/800x1000/2F4F4F/ffffff?text=Winter+Coat",
+    "mainImage": "asset/images/shop/jaket.jpg",
+    "sizes": {
+      "S": 2,
+      "M": 3,
+      "L": 1,
+      "XL": 0
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/2F4F4F/ffffff?text=Front",
       "https://placehold.co/800x1000/2F4F4F/ffffff?text=Open",
@@ -89,7 +125,13 @@
     "category": "Collection Q3",
     "price": 75000,
     "desc": "Topi baseball hitam klasik dengan bordir logo STMNPBDG di bagian depan. Menggunakan pengait besi di bagian belakang untuk menyesuaikan ukuran. Bahan twill kokoh.",
-    "mainImage": "https://placehold.co/800x1000/000000/ffffff?text=Cap+Black",
+    "mainImage": "asset/images/shop/topi.jpg",
+    "sizes": {
+      "S": 20,
+      "M": 25,
+      "L": 18,
+      "XL": 15
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/000000/ffffff?text=Front",
       "https://placehold.co/800x1000/000000/ffffff?text=Side",
@@ -103,7 +145,13 @@
     "category": "Collection Q2",
     "price": 300000,
     "desc": "Celana chino warna beige dengan potongan tapered fit. Menggunakan bahan katun twill stretch yang nyaman untuk bergerak. Cocok dipadukan dengan kemeja atau kaos polos.",
-    "mainImage": "https://placehold.co/800x1000/F5F5DC/333333?text=Chino+Beige",
+    "mainImage": "asset/images/shop/kaos3.jpg",
+    "sizes": {
+      "S": 7,
+      "M": 9,
+      "L": 6,
+      "XL": 4
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/F5F5DC/333333?text=Front",
       "https://placehold.co/800x1000/F5F5DC/333333?text=Back",
@@ -117,7 +165,13 @@
     "category": "Collection Q4",
     "price": 120000,
     "desc": "Syal rajut berbahan wol akrilik yang hangat dan lembut. Warna merah maroon memberikan aksen berani pada outfit musim dingin Anda. Panjang 180cm, cukup untuk berbagai gaya ikatan.",
-    "mainImage": "https://placehold.co/800x1000/8B0000/ffffff?text=Scarf",
+    "mainImage": "asset/images/shop/stiker.jpg",
+    "sizes": {
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/8B0000/ffffff?text=Folded",
       "https://placehold.co/800x1000/8B0000/ffffff?text=Worn",
@@ -131,7 +185,13 @@
     "category": "Collection Q1",
     "price": 280000,
     "desc": "Atasan model kimono modern berwarna hitam. Menggunakan tali ikat samping yang fleksibel. Memberikan tampilan unik dan edgy namun tetap sopan.",
-    "mainImage": "https://placehold.co/800x1000/1a1a1a/ffffff?text=Kimono+Black",
+    "mainImage": "asset/images/shop/hoddy2.jpg",
+    "sizes": {
+      "S": 8,
+      "M": 12,
+      "L": 9,
+      "XL": 5
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/1a1a1a/ffffff?text=Front",
       "https://placehold.co/800x1000/1a1a1a/ffffff?text=Side",
@@ -145,7 +205,13 @@
     "category": "Collection Q1",
     "price": 160000,
     "desc": "Kaos oversized warna abu-abu misty dengan bahan heavyweight cotton 20s. Potongan boxy yang stylish dan nyaman dipakai.",
-    "mainImage": "https://placehold.co/800x1000/808080/ffffff?text=Oversize+Grey",
+    "mainImage": "asset/images/shop/stiker2.jpg",
+    "sizes": {
+      "S": 11,
+      "M": 14,
+      "L": 7,
+      "XL": 9
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/808080/ffffff?text=Front",
       "https://placehold.co/800x1000/808080/ffffff?text=Back",
@@ -159,7 +225,13 @@
     "category": "Collection Q3",
     "price": 320000,
     "desc": "Celana kargo fungsional dengan banyak saku. Warna hijau olive yang maskulin. Bahan ripstop yang kuat dan tahan sobek.",
-    "mainImage": "https://placehold.co/800x1000/556b2f/ffffff?text=Cargo+Olive",
+    "mainImage": "asset/images/shop/tas2.jpg",
+    "sizes": {
+      "S": 3,
+      "M": 5,
+      "L": 4,
+      "XL": 2
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/556b2f/ffffff?text=Front",
       "https://placehold.co/800x1000/556b2f/ffffff?text=Side",
@@ -173,7 +245,13 @@
     "category": "Collection Q2",
     "price": 450000,
     "desc": "Jaket denim klasik warna biru indigo. Potongan regular fit dengan detail jahitan kontras. Must-have item untuk gaya kasual.",
-    "mainImage": "https://placehold.co/800x1000/000080/ffffff?text=Denim+Jacket",
+    "mainImage": "asset/images/shop/stiker3.jpg",
+    "sizes": {
+      "S": 6,
+      "M": 8,
+      "L": 5,
+      "XL": 3
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/000080/ffffff?text=Front",
       "https://placehold.co/800x1000/000080/ffffff?text=Back",
@@ -187,7 +265,13 @@
     "category": "Collection Q4",
     "price": 280000,
     "desc": "Kemeja flanel motif kotak-kotak merah hitam. Bahan katun flanel yang lembut dan hangat. Cocok dipakai sebagai outer atau kemeja.",
-    "mainImage": "https://placehold.co/800x1000/8B0000/ffffff?text=Flannel+Red",
+    "mainImage": "asset/images/shop/pin.jpg",
+    "sizes": {
+      "S": 10,
+      "M": 13,
+      "L": 8,
+      "XL": 6
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/8B0000/ffffff?text=Front",
       "https://placehold.co/800x1000/8B0000/ffffff?text=Pattern",
@@ -201,7 +285,13 @@
     "category": "Collection Q3",
     "price": 90000,
     "desc": "Topi bucket hat warna cream polos. Desain simpel dan trendi. Melindungi dari sinar matahari dengan gaya.",
-    "mainImage": "https://placehold.co/800x1000/f5f5dc/333333?text=Bucket+Hat",
+    "mainImage": "asset/images/shop/pin2.jpg",
+    "sizes": {
+      "S": 0,
+      "M": 0,
+      "L": 0,
+      "XL": 0
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/f5f5dc/333333?text=Front",
       "https://placehold.co/800x1000/f5f5dc/333333?text=Top",
@@ -215,7 +305,13 @@
     "category": "Collection Q3",
     "price": 99000,
     "desc": "Paket 3 pasang kaos kaki crew warna putih dengan logo minimalis. Bahan katun spandex yang elastis dan menyerap keringat.",
-    "mainImage": "https://placehold.co/800x1000/ffffff/333333?text=Socks+Pack",
+    "mainImage": "asset/images/shop/pin3.jpg",
+    "sizes": {
+      "S": 30,
+      "M": 35,
+      "L": 28,
+      "XL": 22
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/ffffff/333333?text=Pack",
       "https://placehold.co/800x1000/ffffff/333333?text=Single",
@@ -229,7 +325,13 @@
     "category": "Collection Q3",
     "price": 120000,
     "desc": "Tas pinggang (waist bag) multifungsi warna hitam. Kompartemen luas untuk HP, dompet, dan kunci. Tali bisa diatur panjangnya.",
-    "mainImage": "https://placehold.co/800x1000/111111/ffffff?text=Waist+Bag",
+    "mainImage": "asset/images/shop/stiker4.jpg",
+    "sizes": {
+      "S": 1,
+      "M": 2,
+      "L": 1,
+      "XL": 0
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/111111/ffffff?text=Front",
       "https://placehold.co/800x1000/111111/ffffff?text=Back",
@@ -243,7 +345,13 @@
     "category": "Collection Q4",
     "price": 380000,
     "desc": "Jaket coach windbreaker warna navy. Bahan parasut ringan dengan lapisan dalam furing. Sablon grafis di punggung.",
-    "mainImage": "https://placehold.co/800x1000/000080/ffffff?text=Coach+Jacket",
+    "mainImage": "asset/images/shop/hoddy2.jpg",
+    "sizes": {
+      "S": 4,
+      "M": 7,
+      "L": 5,
+      "XL": 2
+    },
     "thumbnails": [
       "https://placehold.co/800x1000/000080/ffffff?text=Front",
       "https://placehold.co/800x1000/000080/ffffff?text=Back",

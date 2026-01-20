@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lookbook - STMNPBDG.US</title>
+
+    <!-- CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+        scroll-behavior: smooth;
+      }
+      .bg-custom-green {
+        background-color: #263529;
+      }
+      .text-custom-gold {
+        color: #b6a176;
+      }
+      .hover-line-menu {
+        position: relative;
+        display: inline-block;
+        padding: 0.5rem 0;
+      }
+      .font-roboto {
+        font-family: "Roboto", sans-serif;
+      }
+
+      /* --- TEKNIK HILANGKAN SCROLLBAR TOTAL (GLOBAL) --- */
+
+      /* Menyembunyikan scrollbar di seluruh elemen untuk Chrome, Safari, Opera */
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      /* Menyembunyikan scrollbar di seluruh elemen untuk IE, Edge, Firefox */
+      * {
+        -ms-overflow-style: none; /* IE dan Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+    </style>
+  </head>
+  <!-- 
+    PERUBAHAN DI BODY: 
+    - min-h-screen: Agar footer turun ke bawah jika konten banyak.
+    - overflow-x-hidden: Mencegah scroll menyamping.
+  -->
+  <body
+    class="bg-white m-0 p-0 min-h-screen flex flex-col font-sans text-gray-900 overflow-x-hidden"
+  >
+    <!-- ===================== SIDEBAR MENU ===================== -->
+    <div
+      id="sidebar"
+      class="fixed inset-y-0 left-0 w-64 bg-white z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl"
+    >
+      <div class="p-6">
+        <button
+          onclick="toggleMenu()"
+          class="bg-custom-green text-custom-gold w-10 h-10 rounded flex items-center justify-center mb-12 hover:opacity-90 transition shadow-sm"
+        >
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <ul
+          class="flex flex-col gap-6 text-black font-extrabold tracking-wide text-sm md:text-base"
+        >
+          <li>
+            <a href="shop.html" class="hover-line-menu group"
+              >SHOP<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="collection.html" class="hover-line-menu group"
+              >COLLECTION<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <!-- Link Aktif -->
+          <li>
+            <a href="lookbook.html" class="hover-line-menu group"
+              >LOOKBOOK<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="about_us.html" class="hover-line-menu group"
+              >ABOUT US<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      id="overlay"
+      onclick="toggleMenu()"
+      class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm"
+    ></div>
+
+    <!-- ===================== HEADER ===================== -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 bg-custom-green text-white px-4 py-4 md:px-8 flex justify-between items-center shadow-md h-16 md:h-20"
+    >
+      <button
+        onclick="toggleMenu()"
+        class="text-xl md:text-2xl opacity-80 hover:opacity-100 transition focus:outline-none"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <a
+        href="/index.html"
+        class="text-sm md:text-lg font-bold tracking-widest uppercase flex items-center gap-2 hover:opacity-80 transition cursor-pointer"
+      >
+        <i class="fas fa-leaf text-xs opacity-80"></i> STMNPBDG.US
+      </a>
+      <div class="flex gap-4 md:gap-6 items-center">
+        <a
+          href="../profile/cart.html"
+          class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-white"
+          ><i class="fas fa-shopping-cart"></i
+        ></a>
+        <div class="relative">
+          <button
+            data-user-button
+            class="text-lg md:text-xl opacity-80 hover:opacity-100 transition text-custom-gold"
+          >
+            <i class="fas fa-user-circle"></i>
+          </button>
+          <!-- User Dropdown Menu (hanya muncul saat login) -->
+          <div
+            id="userDropdown"
+            class="hidden absolute right-0 mt-2 w-48 bg-white text-gray-800 rounded-lg shadow-lg z-50"
+          >
+            <div id="userDropdownContent" class="p-4">
+              <!-- Dinamis berdasarkan login status -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <main class="w-full pt-28 pb-16 px-4 flex-grow flex flex-col items-center">
+      <div class="max-w-[1400px] w-full">
+        <!-- Judul Halaman -->
+        <div class="text-center mb-12">
+          <h1
+            class="text-3xl md:text-4xl font-extrabold tracking-widest uppercase text-black font-roboto inline-block relative group"
+          >
+            LOOKBOOK
+          </h1>
+        </div>
+
+        <!-- GRID 4 KOLOM -->
+        <div
+          id="lookbook-grid"
+          class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6"
+        >
+          <!-- Loading State -->
+          <div class="col-span-full flex justify-center py-20">
+            <p class="text-gray-500 animate-pulse text-xs">Memuat galeri...</p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-custom-green text-custom-gold py-6 px-6 w-full text-center mt-auto"
+    >
+      <div class="text-[10px] md:text-xs italic">
+        &copy; 2025 | stmnpbdg.us x dekavein.studios x it.parmad — Crafted with
+        passion. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- ===================== SCRIPT JS ===================== -->
+    <script src="../js/main.js"></script>
+
+    <script>
+      // FUNGSI LOAD LOOKBOOK
+      function loadLookbook() {
+        // Data Lookbook
+        const looks = [
+          {
+            id: 1,
+            image: "../../asset/images/shop/hoddy.jpg",
+            alt: "Casual Style White",
+          },
+          {
+            id: 2,
+            image: "../../asset/images/shop/hoddy2.jpg",
+            alt: "Streetwear Black",
+          },
+          {
+            id: 3,
+            image: "../../asset/images/shop/kaos.jpg",
+            alt: "Summer Vibes",
+          },
+          {
+            id: 4,
+            image: "../../asset/images/shop/kaos 2.jpg",
+            alt: "Winter Collection",
+          },
+          {
+            id: 5,
+            image: "../../asset/images/shop/kaos3.jpg",
+            alt: "Formal Casual",
+          },
+          {
+            id: 6,
+            image: "../../asset/images/shop/jaket.jpg",
+            alt: "Sporty Look",
+          },
+          {
+            id: 7,
+            image: "../../asset/images/shop/tas.jpg",
+            alt: "Daily Outfit",
+          },
+          {
+            id: 8,
+            image: "../../asset/images/shop/tas2.jpg",
+            alt: "Weekend Style",
+          },
+          {
+            id: 9,
+            image: "../../asset/images/shop/topi.jpg",
+            alt: "Urban Fit",
+          },
+          {
+            id: 10,
+            image: "../../asset/images/shop/pin.jpg",
+            alt: "Classic Tee",
+          },
+          {
+            id: 11,
+            image: "../../asset/images/shop/pin2.jpg",
+            alt: "Modern Hoodie",
+          },
+          {
+            id: 12,
+            image: "../../asset/images/shop/pin3.jpg",
+            alt: "Vintage Style",
+          },
+          {
+            id: 13,
+            image: "../../asset/images/shop/stiker.jpg",
+            alt: "Layering Idea",
+          },
+          {
+            id: 14,
+            image: "../../asset/images/shop/stiker2.jpg",
+            alt: "Monochrome",
+          },
+          {
+            id: 15,
+            image: "../../asset/images/shop/stiker3.jpg",
+            alt: "Pastel Color",
+          },
+          {
+            id: 16,
+            image: "../../asset/images/shop/stiker4.jpg",
+            alt: "Bold Outfit",
+          },
+          {
+            id: 17,
+            image: "../../asset/images/shop/DSC04555.jpg",
+            alt: "City Walk",
+          },
+          {
+            id: 18,
+            image: "../../asset/images/shop/hoddy.jpg",
+            alt: "Night Out",
+          },
+        ];
+
+        const grid = document.getElementById("lookbook-grid");
+        grid.innerHTML = "";
+
+        // Render setiap foto ke dalam Grid tanpa teks
+        looks.forEach((item) => {
+          grid.innerHTML += `
+                    <div class="aspect-[3/4] bg-gray-100 rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group cursor-pointer relative">
+                        <!-- Gambar: Hanya Zoom effect saat disentuh -->
+                        <img src="${item.image}" alt="${item.alt}" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 ease-in-out">
+                    </div>
+                `;
+        });
+      }
+
+      // Jalankan saat halaman dimuat
+      window.onload = loadLookbook;
+
+      // Toggle Menu
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      function toggleMenu() {
+        const isHidden = sidebar.classList.contains("-translate-x-full");
+        if (isHidden) {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+          setTimeout(() => {
+            overlay.classList.remove("opacity-0");
+          }, 10);
+        } else {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("opacity-0");
+          setTimeout(() => {
+            overlay.classList.add("hidden");
+          }, 300);
+        }
+      }
+
+      // Event listener untuk user button (toggle dropdown)
+      document.addEventListener("click", function (event) {
+        const userButton = document.querySelector("[data-user-button]");
+        const userDropdown = document.getElementById("userDropdown");
+
+        if (userButton && userDropdown) {
+          if (userButton.contains(event.target)) {
+            userDropdown.classList.toggle("hidden");
+          } else if (!userDropdown.contains(event.target)) {
+            userDropdown.classList.add("hidden");
+          }
+        }
+      });
+    </script>
+
+    <!-- MAIN JS -->
+    <script src="../../asset/js/main.js"></script>
+  </body>
+</html>

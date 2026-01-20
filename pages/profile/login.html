@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masuk - STMNPBDG.US</title>
+
+    <!-- CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      .bg-custom-green {
+        background-color: #263529;
+      }
+      .text-custom-gold {
+        color: #b6a176;
+      }
+      .bg-custom-gold {
+        background-color: #b6a176;
+      }
+      .hover-line-menu {
+        position: relative;
+        display: inline-block;
+        padding: 0.5rem 0;
+      }
+
+      /* Style Input Clean (Sama dengan Guest Checkout) */
+      .form-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background-color: #f3f4f6; /* Gray-100/200 */
+        border: 1px solid transparent;
+        border-radius: 0.5rem; /* Rounded-lg */
+        outline: none;
+        color: #1f2937;
+        font-size: 0.95rem;
+        transition: all 0.3s;
+      }
+      .form-input:focus {
+        background-color: #fff;
+        border-color: #e5e7eb;
+        box-shadow: 0 0 0 2px rgba(38, 53, 41, 0.1);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-gray-50 m-0 p-0 h-screen overflow-hidden flex flex-col font-sans text-gray-900"
+  >
+    <!-- SIDEBAR MENU -->
+    <div
+      id="sidebar"
+      class="fixed inset-y-0 left-0 w-64 bg-white z-[60] transform -translate-x-full transition-transform duration-300 ease-in-out shadow-2xl"
+    >
+      <div class="p-6">
+        <button
+          onclick="toggleMenu()"
+          class="bg-custom-green text-custom-gold w-10 h-10 rounded flex items-center justify-center mb-12 hover:opacity-90 transition shadow-sm"
+        >
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+        <ul
+          class="flex flex-col gap-6 text-black font-extrabold tracking-wide text-sm md:text-base"
+        >
+          <li>
+            <a href="../menu/shop.html" class="hover-line-menu group"
+              >SHOP<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../menu/collection.html" class="hover-line-menu group"
+              >COLLECTION<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../menu/lookbook.html" class="hover-line-menu group"
+              >LOOKBOOK<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+          <li>
+            <a href="../menu/about_us.html" class="hover-line-menu group"
+              >ABOUT US<span
+                class="absolute bottom-0 left-0 w-full h-[2px] bg-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center"
+              ></span
+            ></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      id="overlay"
+      onclick="toggleMenu()"
+      class="fixed inset-0 bg-black/50 z-[55] hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm"
+    ></div>
+
+    <!-- HEADER -->
+    <nav
+      class="fixed top-0 left-0 w-full z-50 bg-custom-green text-white px-4 py-3 md:px-8 flex justify-between items-center shadow-md h-14 md:h-20"
+    >
+      <button
+        onclick="toggleMenu()"
+        class="text-lg md:text-2xl opacity-80 hover:opacity-100 transition focus:outline-none"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <a
+        href="../../index.html"
+        class="text-xs md:text-lg font-bold tracking-widest uppercase flex items-center gap-2 hover:opacity-80 transition cursor-pointer"
+      >
+        <i class="fas fa-leaf text-[10px] md:text-xs opacity-80"></i>
+        STMNPBDG.US
+      </a>
+      <div class="flex gap-3 md:gap-6 items-center">
+        <a
+          href="cart.html"
+          class="text-base md:text-xl opacity-80 hover:opacity-100 transition text-white"
+          ><i class="fas fa-shopping-cart"></i
+        ></a>
+        <!-- Icon User Aktif -->
+        <button
+          class="text-base md:text-xl text-custom-gold hover:opacity-100 transition"
+        >
+          <i class="fas fa-user-circle"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main
+      class="w-full pt-20 pb-10 px-6 md:px-16 flex-grow flex flex-col justify-center items-center h-full overflow-hidden"
+    >
+      <div class="max-w-4xl w-full">
+        <h1 class="text-3xl font-bold mb-10 text-black tracking-tight">
+          Masuk
+        </h1>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start"
+        >
+          <!-- KOLOM KIRI: Form Login -->
+          <form
+            onsubmit="handleLogin(event)"
+            class="flex flex-col gap-5 w-full"
+          >
+            <div class="flex flex-col gap-1.5">
+              <label class="text-sm font-medium text-gray-700"
+                >Alamat Email</label
+              >
+              <input
+                type="email"
+                id="login-email"
+                placeholder="Email"
+                class="form-input"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label class="text-sm font-medium text-gray-700"
+                >Kata Sandi</label
+              >
+              <div class="relative">
+                <input
+                  type="password"
+                  id="login-password"
+                  placeholder="Password"
+                  class="form-input pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onclick="togglePassword()"
+                  class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition"
+                >
+                  <i id="eye-icon" class="far fa-eye"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-6 mt-2">
+              <a
+                href="#"
+                class="text-xs text-gray-500 hover:text-black hover:underline transition w-fit"
+                >Lupa Kata Sandi?</a
+              >
+
+              <button
+                type="submit"
+                class="w-full md:w-32 bg-[#BFA37C] text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-opacity-90 transition shadow-sm text-sm tracking-wide"
+              >
+                Masuk
+              </button>
+            </div>
+          </form>
+
+          <!-- KOLOM KANAN: Options -->
+          <div
+            class="flex flex-col gap-4 w-full pt-6 md:pt-0 border-t md:border-t-0 md:border-l border-gray-200 md:pl-12"
+          >
+            <p class="text-sm text-gray-400 mb-2 md:hidden text-center">Atau</p>
+
+            <a
+              href="create_account.html"
+              class="w-full block border border-gray-300 text-gray-700 text-center font-medium py-2.5 rounded-lg hover:border-black hover:text-black hover:bg-gray-50 transition duration-300 text-sm"
+            >
+              Create Account
+            </a>
+
+            <a
+              href="guest_checkout.html"
+              class="w-full block border border-gray-300 text-gray-700 text-center font-medium py-2.5 rounded-lg hover:border-black hover:text-black hover:bg-gray-50 transition duration-300 text-sm"
+            >
+              Guest Account
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer
+      class="bg-custom-green text-custom-gold py-3 px-6 md:px-12 flex-none w-full text-center"
+    >
+      <div class="text-[10px] md:text-xs italic">
+        &copy; 2025 | stmnpbdg.us x dekavein.studios x it.parmad — Crafted with
+        passion. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- SCRIPT -->
+    <script src="../js/main.js"></script>
+    <script>
+      // Check jika sudah login, redirect ke home
+      window.addEventListener("DOMContentLoaded", function () {
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (currentUser) {
+          alert(
+            "Anda sudah login sebagai " +
+              (currentUser.name || currentUser.email),
+          );
+          window.location.href = "../../index.html";
+        }
+      });
+
+      // LOGIC LOGIN (Mengecek LocalStorage)
+      function handleLogin(event) {
+        event.preventDefault();
+
+        const emailInput = document.getElementById("login-email").value;
+        const passwordInput = document.getElementById("login-password").value;
+
+        // Ambil data users dari LocalStorage
+        const users = JSON.parse(localStorage.getItem("usersDB")) || [];
+
+        // Cari kecocokan
+        const user = users.find(
+          (u) => u.email === emailInput && u.password === passwordInput,
+        );
+
+        // Backdoor untuk testing cepat
+        if (
+          user ||
+          (emailInput === "admin@test.com" && passwordInput === "123")
+        ) {
+          // Simpan sesi login
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify(user || { nama: "Admin", email: emailInput }),
+          );
+
+          alert("Login Berhasil!");
+
+          // SKENARIO: Jika ada barang di keranjang -> ke Checkout, jika tidak -> Home
+          const cart = JSON.parse(localStorage.getItem("stmnpbdg_cart")) || [];
+          if (cart.length > 0) {
+            window.location.href = "../payment/checkout.html";
+          } else {
+            window.location.href = "../../index.html";
+          }
+        } else {
+          alert("Email atau Kata Sandi salah! Silakan daftar terlebih dahulu.");
+        }
+      }
+
+      // Toggle Password
+      function togglePassword() {
+        const input = document.getElementById("login-password");
+        const icon = document.getElementById("eye-icon");
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        } else {
+          input.type = "password";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        }
+      }
+
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      function toggleMenu() {
+        const isHidden = sidebar.classList.contains("-translate-x-full");
+        if (isHidden) {
+          sidebar.classList.remove("-translate-x-full");
+          overlay.classList.remove("hidden");
+        } else {
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("opacity-0");
+          setTimeout(() => {
+            overlay.classList.add("hidden");
+          }, 300);
+        }
+      }
+      // 1. Fungsi toggle untuk konfirmasi password
+      function toggleRegConfirm() {
+        const input = document.getElementById("reg-confirm");
+        const icon = document.getElementById("reg-confirm-eye");
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.remove("fa-eye");
+          icon.classList.add("fa-eye-slash");
+        } else {
+          input.type = "password";
+          icon.classList.remove("fa-eye-slash");
+          icon.classList.add("fa-eye");
+        }
+      }
+
+      // 2. Validasi password yang lebih kuat
+      function validatePassword(password) {
+        const minLength = 6;
+        const hasUpperCase = /[A-Z]/.test(password);
+        const hasLowerCase = /[a-z]/.test(password);
+        const hasNumbers = /\d/.test(password);
+
+        if (password.length < minLength) {
+          return "Password minimal 6 karakter";
+        }
+        if (!hasUpperCase) {
+          return "Password harus mengandung huruf besar";
+        }
+        if (!hasLowerCase) {
+          return "Password harus mengandung huruf kecil";
+        }
+        if (!hasNumbers) {
+          return "Password harus mengandung angka";
+        }
+        return null; // Valid
+      }
+
+      // 3. Validasi nomor handphone
+      function validatePhone(phone) {
+        const phoneRegex = /^[0-9]{10,13}$/;
+        if (!phoneRegex.test(phone)) {
+          return "Nomor handphone harus 10-13 digit angka";
+        }
+        return null;
+      }
+
+      // 4. Fungsi hash password sederhana (basic security)
+      function simpleHash(password) {
+        // Ini hanya contoh sederhana, untuk produksi gunakan library bcrypt
+        return btoa(password + "stmnpbdg_salt");
+      }
+
+      // 5. Perbaikan fungsi handleRegister dengan validasi lengkap
+      async function handleRegister(e) {
+        e.preventDefault();
+
+        // Ambil nilai form
+        const email = document.getElementById("reg-email").value.trim();
+        const password = document.getElementById("reg-password").value;
+        const confirm = document.getElementById("reg-confirm").value;
+        const nama = document.getElementById("reg-nama").value.trim();
+        const phone = document.getElementById("reg-phone").value.trim();
+
+        // Validasi
+        const passwordError = validatePassword(password);
+        if (passwordError) {
+          alert(passwordError);
+          document.getElementById("reg-password").focus();
+          return;
+        }
+
+        if (password !== confirm) {
+          alert("Konfirmasi kata sandi tidak cocok!");
+          document.getElementById("reg-confirm").focus();
+          return;
+        }
+
+        const phoneError = validatePhone(phone);
+        if (phoneError) {
+          alert(phoneError);
+          document.getElementById("reg-phone").focus();
+          return;
+        }
+
+        // Validasi email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          alert("Format email tidak valid!");
+          document.getElementById("reg-email").focus();
+          return;
+        }
+
+        // Tampilkan loading
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.innerHTML =
+          '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        submitBtn.disabled = true;
+
+        try {
+          // Ambil database users
+          let users = JSON.parse(localStorage.getItem("usersDB")) || [];
+
+          // Cek Email sudah terdaftar
+          if (users.find((u) => u.email === email)) {
+            throw new Error("Email sudah terdaftar! Silakan login.");
+          }
+
+          // Hash password sebelum disimpan
+          const hashedPassword = simpleHash(password);
+
+          // Simpan data user
+          users.push({
+            email,
+            password: hashedPassword, // Simpan yang sudah di-hash
+            nama,
+            phone,
+            createdAt: new Date().toISOString(),
+          });
+
+          localStorage.setItem("usersDB", JSON.stringify(users));
+
+          // Success message
+          alert("Pendaftaran Berhasil! Silakan Login.");
+          window.location.href = "login.html";
+        } catch (error) {
+          alert(error.message || "Terjadi kesalahan saat registrasi");
+        } finally {
+          // Reset button
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }
+      }
+
+      // 6. Tambahkan eye icon untuk konfirmasi password
+      // Update HTML untuk konfirmasi password:
+      /*
+<div class="relative">
+  <input
+    type="password"
+    id="reg-confirm"
+    class="form-input pr-10"
+    placeholder="Ulangi kata sandi"
+    required
+  />
+  <button
+    type="button"
+    onclick="toggleRegConfirm()"
+    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-black transition"
+  >
+    <i id="reg-confirm-eye" class="far fa-eye"></i>
+  </button>
+</div>
+*/
+
+      // 7. Tambahkan real-time validation feedback
+      document.addEventListener("DOMContentLoaded", function () {
+        // Login protection: redirect if already logged in
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        if (currentUser) {
+          window.location.href = "../../index.html";
+          return;
+        }
+
+        const passwordInput = document.getElementById("reg-password");
+        const confirmInput = document.getElementById("reg-confirm");
+
+        if (passwordInput) {
+          passwordInput.addEventListener("input", function () {
+            const error = validatePassword(this.value);
+            if (error && this.value.length >= 6) {
+              this.style.borderColor = "#ef4444";
+            } else {
+              this.style.borderColor = "#d1d5db";
+            }
+          });
+        }
+
+        if (confirmInput) {
+          confirmInput.addEventListener("input", function () {
+            const password = document.getElementById("reg-password").value;
+            if (this.value !== password && this.value.length > 0) {
+              this.style.borderColor = "#ef4444";
+            } else {
+              this.style.borderColor = "#d1d5db";
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
