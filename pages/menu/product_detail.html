@@ -659,31 +659,101 @@
           }
         }
 
-        // Render Thumbnails
+        // Render Thumbnails using images from lookbook (no duplicates within same product)
         const thumbContainer = document.getElementById("thumbnail-container");
         if (thumbContainer) {
           thumbContainer.innerHTML = "";
-          if (product.thumbnails && product.thumbnails.length > 0) {
-            product.thumbnails.forEach((imgUrl, index) => {
-              const div = document.createElement("div");
-              div.className = `w-full h-full bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition border-2 ${
-                index === 0 ? "border-[#263529]" : "border-transparent"
-              } hover:border-[#263529]`;
 
-              div.onclick = function () {
-                document.getElementById("main-image").src = imgUrl;
-                Array.from(thumbContainer.children).forEach((c) => {
-                  c.classList.remove("border-[#263529]");
-                  c.classList.add("border-transparent");
+          // Load lookbook data and pick thumbnails
+          fetch("../../data/lookbook.json")
+            .then((res) => res.json())
+            .then((lookbook) => {
+              const images = Array.isArray(lookbook)
+                ? lookbook.map((it) => it.image).filter(Boolean)
+                : [];
+
+              const THUMB_COUNT = 4;
+
+              // Select unique images for this product (no repeats within the same product)
+              let selected = [];
+              if (images.length >= THUMB_COUNT) {
+                // random unique pick
+                const available = [...images];
+                while (selected.length < THUMB_COUNT) {
+                  const idx = Math.floor(Math.random() * available.length);
+                  selected.push(available.splice(idx, 1)[0]);
+                }
+              } else {
+                // If lookbook has fewer images than needed, fill as much as possible uniquely
+                selected = [...images];
+                // then repeat images only if unavoidable (very unlikely with current dataset)
+                while (selected.length < THUMB_COUNT && images.length > 0) {
+                  for (
+                    let i = 0;
+                    i < images.length && selected.length < THUMB_COUNT;
+                    i++
+                  ) {
+                    if (!selected.includes(images[i])) selected.push(images[i]);
+                  }
+                  if (selected.length < THUMB_COUNT) selected.push(images[0]);
+                }
+              }
+
+              // Fallback: if still empty, use product.mainImage or placeholder
+              if (selected.length === 0) {
+                if (product.mainImage) selected = [product.mainImage];
+                else
+                  selected = [
+                    "https://placehold.co/400x400/cccccc/000000?text=No+Image",
+                  ];
+              }
+
+              // Render the selected thumbnails
+              selected.forEach((imgUrl, index) => {
+                const div = document.createElement("div");
+                div.className = `w-full h-full bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition border-2 ${
+                  index === 0 ? "border-[#263529]" : "border-transparent"
+                } hover:border-[#263529]`;
+
+                div.onclick = function () {
+                  document.getElementById("main-image").src = imgUrl;
+                  Array.from(thumbContainer.children).forEach((c) => {
+                    c.classList.remove("border-[#263529]");
+                    c.classList.add("border-transparent");
+                  });
+                  this.classList.remove("border-transparent");
+                  this.classList.add("border-[#263529]");
+                };
+
+                div.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover">`;
+                thumbContainer.appendChild(div);
+              });
+            })
+            .catch((err) => {
+              // If lookbook load fails, fallback to product thumbnails (if any)
+              console.warn("Failed to load lookbook.json", err);
+              if (product.thumbnails && product.thumbnails.length > 0) {
+                product.thumbnails.forEach((imgUrl, index) => {
+                  const div = document.createElement("div");
+                  div.className = `w-full h-full bg-gray-100 rounded-lg overflow-hidden cursor-pointer hover:opacity-80 transition border-2 ${
+                    index === 0 ? "border-[#263529]" : "border-transparent"
+                  } hover:border-[#263529]`;
+
+                  div.onclick = function () {
+                    document.getElementById("main-image").src = imgUrl;
+                    Array.from(thumbContainer.children).forEach((c) => {
+                      c.classList.remove("border-[#263529]");
+                      c.classList.add("border-transparent");
+                    });
+                    this.classList.remove("border-transparent");
+                    this.classList.add("border-[#263529]");
+                  };
+
+                  div.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover">`;
+                  thumbContainer.appendChild(div);
                 });
-                this.classList.remove("border-transparent");
-                this.classList.add("border-[#263529]");
-              };
-
-              div.innerHTML = `<img src="${imgUrl}" class="w-full h-full object-cover">`;
-              thumbContainer.appendChild(div);
+              }
             });
-          }
         }
 
         // Update Size Buttons dengan Stock Info
